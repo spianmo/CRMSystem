@@ -17,20 +17,8 @@ import java.util.List;
 
 import cn.hutool.core.util.ReflectUtil;
 
-/**
- * 返回一个JavaBean的集合
- *
- * @Author: fangju
- * @Date: 2019/6/15 17:31
- */
-
-/**
- * 返回一个JavaBean的集合
- * @Author: fangju
- * @Date: 2019/6/15 17:31
- */
 public class BeanListHandler<T> implements IResultSetHandler<List<T>> {
-    private Class<T> clazz;
+    private final Class<T> clazz;
 
     public BeanListHandler(Class<T> clazz) {
         this.clazz = clazz;
@@ -48,7 +36,7 @@ public class BeanListHandler<T> implements IResultSetHandler<List<T>> {
                 T obj = clazz.newInstance();
                 for (PropertyDescriptor pd : pds) {
                     //获取结果集中对应字段名的值
-                    Object o = rs.getObject(HumpUtil.HumpToUnderline(pd.getName()));
+                    Object o = rs.getObject(HumpUtil.humpToUnderline(pd.getName()));
                     //执行当前方法并传入参数
                     Class<?> clazz = ReflectUtil.getField(obj.getClass(), pd.getName()).getType();
                     if (!clazz.isEnum()) {

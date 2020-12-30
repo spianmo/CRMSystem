@@ -15,20 +15,8 @@ import java.sql.ResultSet;
 
 import cn.hutool.core.util.ReflectUtil;
 
-/**
- * 返回一个JavaBean
- *
- * @Author: fangju
- * @Date: 2019/6/15
- */
-
-/**
- * 返回一个JavaBean
- * @Author: fangju
- * @Date: 2019/6/15
- */
 public class BeanHandler<T> implements IResultSetHandler<T> {
-    private Class<T> clazz;
+    private final Class<T> clazz;
 
     public BeanHandler(Class<T> clazz) {
         this.clazz = clazz;
@@ -46,7 +34,7 @@ public class BeanHandler<T> implements IResultSetHandler<T> {
                 PropertyDescriptor[] pds = beanInfo.getPropertyDescriptors();
                 for (PropertyDescriptor pd : pds) {
                     //获取结果集中对应字段名的值
-                    Object o = rs.getObject(HumpUtil.HumpToUnderline(pd.getName()));
+                    Object o = rs.getObject(HumpUtil.humpToUnderline(pd.getName()));
                     //执行当前方法并传入参数
 /*                    System.out.println("=====User属性名称==>"+pd.getName());
                     System.out.println("=====User属性类型==>"+pd.getPropertyType().getName());
@@ -59,8 +47,8 @@ public class BeanHandler<T> implements IResultSetHandler<T> {
                     if (!clazz.isEnum()) {
                         pd.getWriteMethod().invoke(obj, o);
                     } else {
-                        System.out.println("====>>>处理枚举" + clazz);
-                        Method method = ReflectUtil.getMethodByName(clazz, "getEnum");
+                        //System.out.println("====>>>处理枚举" + clazz);
+                        Method method = ReflectUtil.getMethodByName(clazz, "valueOf");
                         System.out.println(method);
                         Object enumObj = method.invoke(null, o);
                         pd.getWriteMethod().invoke(obj, enumObj);

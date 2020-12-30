@@ -4,6 +4,6 @@ import java.sql.ResultSet;
 
 
 public interface IResultSetHandler<T> {
-    public T handle(ResultSet rs);
+    T handle(ResultSet rs);
 }
 

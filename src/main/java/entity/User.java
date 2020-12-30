@@ -1,5 +1,6 @@
 package entity;
 
+import bean.BaseEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,30 +25,36 @@ public class User {
     private String password;
     private Level accountLevel;
 
-    public enum Level {
-        ADMIN(2), EMPLOYEE(1), CUSTOMER(0);
+    public enum Level implements BaseEnum {
+        /**
+         * 管理员
+         */
+        ADMIN(0,"管理员"),
+        /**
+         * 员工
+         */
+        EMPLOYEE(1,"员工"),
+        /**
+         * 客户
+         */
+        CUSTOMER(2,"客户");
 
-        private Integer value;
+        private final Integer value;
+        private final String desc;
 
-        Level(Integer value) {
+        Level(Integer value,String desc) {
             this.value = value;
+            this.desc = desc;
         }
 
-        public static Level getEnum(int value) {
-            switch (value) {
-                case 0:
-                    return CUSTOMER;
-                case 1:
-                    return EMPLOYEE;
-                case 2:
-                    return ADMIN;
-                default:
-                    return null;
-            }
-        }
-
-        public Integer toInt() {
+        @Override
+        public Integer getCode() {
             return this.value;
+        }
+
+        @Override
+        public String getDesc() {
+            return this.desc;
         }
 
     }

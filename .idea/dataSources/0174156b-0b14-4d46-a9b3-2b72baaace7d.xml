@@ -998,7 +998,7 @@
     </column>
     <column id="291" parent="233" name="account_level">
       <Position>5</Position>
-      <DataType>tinyint(4)|0s</DataType>
+      <DataType>enum(&apos;ADMIN&apos;, &apos;EMPLOYEE&apos;, &apos;CUSTOMER&apos;)|0e</DataType>
       <NotNull>1</NotNull>
     </column>
     <key id="292" parent="233" name="PRIMARY">
