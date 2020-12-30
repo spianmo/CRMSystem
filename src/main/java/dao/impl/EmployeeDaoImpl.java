@@ -1,5 +1,7 @@
 package dao.impl;
 
+import org.intellij.lang.annotations.Language;
+
 import java.util.List;
 
 import dao.EmployeeDao;
@@ -16,31 +18,31 @@ import utils.jdbc.Db;
 public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public List<Employee> selectAllEmployee() {
-        String sql = "SELECT * FROM t_employee";
+        @Language("SQL") String sql = "SELECT * FROM t_employee";
         return Db.executeQuery(sql, new BeanListHandler<>(Employee.class));
     }
 
     @Override
     public List<Employee> selectEmployeeByDepartment(int departmentId) {
-        String sql = "SELECT * FROM t_employee WHERE department_id = ?";
+        @Language("SQL") String sql = "SELECT * FROM t_employee WHERE department_id = ?";
         return Db.executeQuery(sql, new BeanListHandler<>(Employee.class), departmentId);
     }
 
     @Override
     public int insertEmployee(Employee employee) {
-        String sql = "INSERT INTO `t_employee` (`name`, `produce_type`, `department_id`, `salary`) VALUES (?, ?, ?, ?);";
+        @Language("SQL") String sql = "INSERT INTO `t_employee` (`name`, `produce_type`, `department_id`, `salary`) VALUES (?, ?, ?, ?);";
         return Db.executeUpdate(sql, employee.getName(), employee.getProduceType(), employee.getDepartmentId(), employee.getSalary());
     }
 
     @Override
     public int updataEmployee(Employee employee) {
-        String sql = "UPDATE t_employee SET name = ?, produce_type = ?, department_id = ?, salary = ? WHERE employee_id = ?";
+        @Language("SQL") String sql = "UPDATE t_employee SET name = ?, produce_type = ?, department_id = ?, salary = ? WHERE employee_id = ?";
         return Db.executeUpdate(sql, employee.getName(), employee.getProduceType(), employee.getDepartmentId(), employee.getSalary(), employee.getEmployeeId());
     }
 
     @Override
     public int deleteEmployeeById(int employeeId) {
-        String sql = "DELETE FROM t_employee WHERE employee_id = ?";
+        @Language("SQL") String sql = "DELETE FROM t_employee WHERE employee_id = ?";
         return Db.executeUpdate(sql, employeeId);
     }
 

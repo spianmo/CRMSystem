@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 30, 2020 at 10:10 AM
+-- Generation Time: Dec 30, 2020 at 11:53 PM
 -- Server version: 5.7.26
 -- PHP Version: 5.6.9
 
@@ -120,7 +120,6 @@ CREATE TABLE `t_trade` (
                            `customer_id` int(11) NOT NULL,
                            `produce_id` int(11) NOT NULL,
                            `trade_id` int(11) NOT NULL,
-                           `employee_id` int(11) DEFAULT NULL,
                            `amount` decimal(10,0) DEFAULT NULL,
                            `produce_num` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -136,7 +135,7 @@ CREATE TABLE `t_user` (
                           `username` varchar(50) NOT NULL,
                           `password` varchar(50) NOT NULL,
                           `email` varchar(50) NOT NULL,
-                          `account_level` tinyint(4) NOT NULL
+                          `account_level` enum('ADMIN','EMPLOYEE','CUSTOMER') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -144,7 +143,7 @@ CREATE TABLE `t_user` (
 --
 
 INSERT INTO `t_user` (`id`, `username`, `password`, `email`, `account_level`) VALUES
-(1, 'kirito', 'e10adc3949ba59abbe56e057f20f883e', 'finger@spianmo.com', 1);
+(1, 'kirito', 'e10adc3949ba59abbe56e057f20f883e', 'finger@spianmo.com', 'EMPLOYEE');
 
 --
 -- Indexes for dumped tables
@@ -208,7 +207,7 @@ ALTER TABLE `t_user`
 -- AUTO_INCREMENT for table `t_employee`
 --
 ALTER TABLE `t_employee`
-    MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+    MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `t_feedback`
