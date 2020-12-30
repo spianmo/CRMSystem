@@ -27,26 +27,25 @@ public class MyJScrollBar extends BasicScrollBarUI {
 
     //手柄透明度
     private static final float opaque = 0.8f;
-    // 手柄边框颜色
-    private Color thumbColor = new Color(61,90,254);
-
-    // 手柄颜色
-    private Color thumbColorFrom = new Color(61,90,254);
-    private Color thumbColorTo = new Color(61,90,254);
-
     // 滑道颜色
     private static final Color backColorFrom = new Color(255, 255, 255);
     private static final Color backColorTo = new Color(255, 255, 255);
+    // 手柄边框颜色
+    private Color thumbColor = new Color(61, 90, 254);
+    // 手柄颜色
+    private Color thumbColorFrom = new Color(61, 90, 254);
+    private Color thumbColorTo = new Color(61, 90, 254);
 
-    public MyJScrollBar(){
+    public MyJScrollBar() {
 
     }
 
-    public MyJScrollBar(Color color){
+    public MyJScrollBar(Color color) {
         this.thumbColor = color;
         this.thumbColorFrom = color;
         this.thumbColorTo = color;
     }
+
     @Override
     protected void configureScrollBarColors() {
 

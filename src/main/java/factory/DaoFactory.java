@@ -21,7 +21,7 @@ import dao.impl.UserDaoImpl;
  * @Date 11/15/2020
  **/
 public class DaoFactory {
-    public static CustomerDao getCustomerDaoInstance(){
+    public static CustomerDao getCustomerDaoInstance() {
         return new CustomerDaoImpl();
     }
 
@@ -29,19 +29,19 @@ public class DaoFactory {
         return new UserDaoImpl();
     }
 
-    public static EmployeeDao getEmployeeDaoInstance(){
+    public static EmployeeDao getEmployeeDaoInstance() {
         return new EmployeeDaoImpl();
     }
 
-    public static FeedbackDao getFeedbackDaoInstance(){
+    public static FeedbackDao getFeedbackDaoInstance() {
         return new FeedbackDaoImpl();
     }
 
-    public static TaskDao getTaskDaoInstance(){
+    public static TaskDao getTaskDaoInstance() {
         return new TaskDaoImpl();
     }
 
-    public static ProduceDao getProduceDaoInstance(){
+    public static ProduceDao getProduceDaoInstance() {
         return new ProduceDaoImpl();
     }
 }

@@ -7,7 +7,9 @@ package compent;
  * @Date 11/29/2020
  **/
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.SwingConstants;
 import javax.swing.plaf.basic.BasicButtonUI;
 
 /**

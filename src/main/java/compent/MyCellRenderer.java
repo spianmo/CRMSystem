@@ -35,8 +35,7 @@ public class MyCellRenderer extends JPanel implements TreeCellRenderer {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         icon = new JLabel() {
             public void setBackground(Color color) {
-                if (color instanceof ColorUIResource)
-                    color = null;
+                if (color instanceof ColorUIResource) color = null;
                 super.setBackground(color);
             }
         };
@@ -45,11 +44,8 @@ public class MyCellRenderer extends JPanel implements TreeCellRenderer {
         add(text = new TreeTextArea());
     }
 
-    public Component getTreeCellRendererComponent(JTree tree, Object value,
-                                                  boolean isSelected, boolean expanded, boolean leaf, int row,
-                                                  boolean hasFocus) {
-        String stringValue = tree.convertValueToText(value, isSelected,
-                expanded, leaf, row, hasFocus);
+    public Component getTreeCellRendererComponent(JTree tree, Object value, boolean isSelected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
+        String stringValue = tree.convertValueToText(value, isSelected, expanded, leaf, row, hasFocus);
         setEnabled(tree.isEnabled());
         text.setText(stringValue);
         text.setSelect(isSelected);
@@ -72,8 +68,7 @@ public class MyCellRenderer extends JPanel implements TreeCellRenderer {
     }
 
     public void setBackground(Color color) {
-        if (color instanceof ColorUIResource)
-            color = null;
+        if (color instanceof ColorUIResource) color = null;
         super.setBackground(color);
     }
 
@@ -88,19 +83,18 @@ public class MyCellRenderer extends JPanel implements TreeCellRenderer {
         }
 
         public void setBackground(Color color) {
-            if (color instanceof ColorUIResource)
-                color = null;
+            if (color instanceof ColorUIResource) color = null;
             super.setBackground(color);
+        }
+
+        public Dimension getPreferredSize() {
+            return preferredSize;
         }
 
         public void setPreferredSize(Dimension d) {
             if (d != null) {
                 preferredSize = d;
             }
-        }
-
-        public Dimension getPreferredSize() {
-            return preferredSize;
         }
 
         public void setText(String str) {
@@ -137,8 +131,7 @@ public class MyCellRenderer extends JPanel implements TreeCellRenderer {
 
         void setFocus(boolean hasFocus) {
             if (hasFocus) {
-                Color lineColor = UIManager
-                        .getColor("Tree.selectionBorderColor");
+                Color lineColor = UIManager.getColor("Tree.selectionBorderColor");
                 setBorder(BorderFactory.createLineBorder(lineColor));
             } else {
                 setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));

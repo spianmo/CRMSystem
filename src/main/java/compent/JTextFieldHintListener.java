@@ -6,6 +6,7 @@ package compent;
  * @Author Finger
  * @Date 11/23/2020
  **/
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.FocusEvent;
@@ -29,7 +30,7 @@ public class JTextFieldHintListener implements FocusListener {
     public void focusGained(FocusEvent e) {
         //获取焦点时，清空提示内容
         String temp = textField.getText();
-        if(temp.equals(hintText)) {
+        if (temp.equals(hintText)) {
             textField.setText("");
             textField.setForeground(Color.BLACK);
         }
@@ -40,7 +41,7 @@ public class JTextFieldHintListener implements FocusListener {
     public void focusLost(FocusEvent e) {
         //失去焦点时，没有输入内容，显示提示内容
         String temp = textField.getText();
-        if(temp.equals("")) {
+        if (temp.equals("")) {
             textField.setForeground(Color.GRAY);
             textField.setText(hintText);
         }

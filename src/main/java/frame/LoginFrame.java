@@ -33,10 +33,10 @@ public class LoginFrame extends NoBorderJFrame {
 
     public LoginFrame() {
         initComponent();
-        loginBtn.addActionListener(e ->{
+        loginBtn.addActionListener(e -> {
             String account = accountField.getText().trim();
             String password = new String(passwordField.getPassword()).trim();
-            if (account.isEmpty() || password.isEmpty()){
+            if (account.isEmpty() || password.isEmpty()) {
                 MaterialOptionPane.showMessageDialog("账号密码不能为空");
                 return;
             }
@@ -46,15 +46,15 @@ public class LoginFrame extends NoBorderJFrame {
                     LoginFrame.this.dispose();
                     LoginFrame.this.toBack();
                     MaterialOptionPane.showMessageDialog(msg);
-                    switch (user.getAccountLevel()){
+                    switch (user.getAccountLevel()) {
                         case ADMIN:
-                            new AdminMainFrame("管理员:"+user.getUsername());
+                            new AdminMainFrame("管理员:" + user.getUsername());
                             break;
                         case EMPLOYEE:
                             new EmployeeMainFrame("员工:" + user.getUsername());
                             break;
                         case CUSTOMER:
-                            new CustomerMainFrame("客户:"+user.getUsername());
+                            new CustomerMainFrame("客户:" + user.getUsername());
                             break;
                         default:
                             MaterialOptionPane.showMessageDialog("账号身份异常！");
@@ -73,20 +73,20 @@ public class LoginFrame extends NoBorderJFrame {
 
     }
 
+    public static void main(String[] args) {
+        new LoginFrame();
+    }
+
     public void initComponent() {
-        setLocation(500,240);
+        setLocation(500, 240);
         setTitle("CRMLoginFrame");
         setContentPane(mainPanel);
-        setSize(1000,600);
+        setSize(1000, 600);
         setUndecorated(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         accountField.setBorder(new RoundBorder(Color.LIGHT_GRAY));
         passwordField.setBorder(new RoundBorder(Color.LIGHT_GRAY));
         loginBtn.setBorder(new RoundBorder(Color.LIGHT_GRAY));
-    }
-
-    public static void main(String[] args) {
-        new LoginFrame();
     }
 }

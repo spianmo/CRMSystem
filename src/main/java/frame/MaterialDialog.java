@@ -23,13 +23,12 @@ import javax.swing.KeyStroke;
 import compent.DialogActionListener;
 
 public class MaterialDialog extends JDialog {
+    int xOld = 0;
+    int yOld = 0;
     private JPanel contentPane;
     private JButton 确定Button;
     private JButton 取消Button;
     private JLabel messageField;
-
-    int xOld = 0;
-    int yOld = 0;
 
     public MaterialDialog(String message, DialogActionListener actionListener) {
         setContentPane(contentPane);

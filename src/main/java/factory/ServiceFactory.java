@@ -21,25 +21,27 @@ import service.impl.UserServiceImpl;
  * @Date 11/15/2020
  **/
 public class ServiceFactory {
-    public static CustomerService getCustomerServiceInstance(){
+    public static CustomerService getCustomerServiceInstance() {
         return new CustomerServiceImpl();
     }
-    public static EmployeeService getEmployeeServiceInstance(){
+
+    public static EmployeeService getEmployeeServiceInstance() {
         return new EmployeeServiceImpl();
     }
-    public static UserService getUserServiceInstance(){
+
+    public static UserService getUserServiceInstance() {
         return new UserServiceImpl();
     }
 
-    public static FeedbackService getFeedbackServiceInstance(){
+    public static FeedbackService getFeedbackServiceInstance() {
         return new FeedbackServiceImpl();
     }
 
-    public static TaskService getTaskServiceInstance(){
+    public static TaskService getTaskServiceInstance() {
         return new TaskServiceImpl();
     }
 
-    public static ProduceService getProduceServiceInstance(){
+    public static ProduceService getProduceServiceInstance() {
         return new ProduceServiceImpl();
     }
 }

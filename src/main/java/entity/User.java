@@ -45,6 +45,7 @@ public class User {
                     return null;
             }
         }
+
         public Integer toInt() {
             return this.value;
         }

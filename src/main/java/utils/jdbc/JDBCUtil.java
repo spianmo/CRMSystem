@@ -20,6 +20,17 @@ public class JDBCUtil {
     private static Connection connection = null;
     private static JDBCUtil jdbcUtil = null;
 
+    static {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private JDBCUtil() {
+    }
+
     /**
      * 获得JDBCUtil实例
      *
@@ -36,14 +47,10 @@ public class JDBCUtil {
         return jdbcUtil;
     }
 
-    private JDBCUtil() {
-    }
-
-    static {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+    public static void main(String[] args) {
+        Connection connection = JDBCUtil.getInitJdbcUtil().getConnection();
+        if (connection != null) {
+            System.out.println("连接成功");
         }
     }
 
@@ -64,29 +71,23 @@ public class JDBCUtil {
 
     /**
      * 关闭连接（Connection连接对象必须在最后关闭）
+     *
      * @param st 编译执行对象
      * @param rs 结果集
      */
-    public void close(Statement st, ResultSet rs){
+    public void close(Statement st, ResultSet rs) {
         try {
-            if(rs != null){
+            if (rs != null) {
                 rs.close();
             }
-            if(st != null){
+            if (st != null) {
                 st.close();
             }
-            if(connection != null){
+            if (connection != null) {
                 connection.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args) {
-        Connection connection = JDBCUtil.getInitJdbcUtil().getConnection();
-        if (connection != null) {
-            System.out.println("连接成功");
         }
     }
 }

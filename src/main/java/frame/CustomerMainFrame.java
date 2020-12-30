@@ -25,6 +25,10 @@ import frame.runnable.TimeThread;
  **/
 public class CustomerMainFrame extends NoBorderJFrame {
 
+    private static final Color COLOR_CYAN = new Color(83, 109, 254);
+    private static final Color COLOR_WHITE = new Color(255, 255, 255);
+    int xOld = 0;
+    int yOld = 0;
     private JPanel mainPanel;
     private JPanel menuPanel;
     private JPanel centerPanel;
@@ -45,13 +49,9 @@ public class CustomerMainFrame extends NoBorderJFrame {
     private JLabel oneTalkLabel;
     private JLabel timeLabel;
     private CardLayout cardLayout;
-
-    private static final Color COLOR_CYAN = new Color(83, 109, 254);
-    private static final Color COLOR_WHITE = new Color(255, 255, 255);
-
-    public CustomerMainFrame(String title){
+    public CustomerMainFrame(String title) {
         this.toFront();
-        mainTitle.setText("   CRM System "+title);
+        mainTitle.setText("   CRM System " + title);
         oneTalkLabel.setText(title);
         OneTalkThread oneTalkThread = new OneTalkThread();
         oneTalkThread.setOneTalkLabel(oneTalkLabel);
@@ -64,10 +64,11 @@ public class CustomerMainFrame extends NoBorderJFrame {
         initComponent();
     }
 
-    int xOld = 0;
-    int yOld = 0;
+    public static void main(String[] args) {
+        new CustomerMainFrame("");
+    }
 
-    public void initSideTabMenu(){
+    public void initSideTabMenu() {
         cardLayout = new CardLayout();
         centerPanel.setLayout(cardLayout);
         centerPanel.add("1", employeeInfoPanel);
@@ -178,9 +179,5 @@ public class CustomerMainFrame extends NoBorderJFrame {
         exitBtn.addActionListener(actionEvent -> {
             this.dispose();
         });
-    }
-
-    public static void main(String[] args) {
-        new CustomerMainFrame("");
     }
 }

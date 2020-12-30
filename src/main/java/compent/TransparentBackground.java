@@ -23,29 +23,29 @@ public class TransparentBackground extends JComponent {
 
     public TransparentBackground(JFrame frame) {
         this.frame = frame;
-        updateBackground( );
+        updateBackground();
     }
+
     /**
      * @todo 获取屏幕快照后立即更新窗口背景
      */
-    public void updateBackground( ) {
+    public void updateBackground() {
         try {
-            Robot rbt = new Robot( );
-            Toolkit tk = Toolkit.getDefaultToolkit( );
-            Dimension dim = tk.getScreenSize( );
-            background = rbt.createScreenCapture(
-                    new Rectangle(0,0,(int)dim.getWidth( ),
-                            (int)dim.getHeight( )));
+            Robot rbt = new Robot();
+            Toolkit tk = Toolkit.getDefaultToolkit();
+            Dimension dim = tk.getScreenSize();
+            background = rbt.createScreenCapture(new Rectangle(0, 0, (int) dim.getWidth(), (int) dim.getHeight()));
         } catch (Exception ex) {
             //p(ex.toString( ));
 // 此方法没有申明过，因为无法得知上下文。因为不影响执行效果，先注释掉它
-            ex.printStackTrace( );
+            ex.printStackTrace();
         }
     }
+
     @Override
     public void paintComponent(Graphics g) {
-        Point pos = this.getLocationOnScreen( );
-        Point offset = new Point(-pos.x,-pos.y);
-        g.drawImage(background,offset.x,offset.y,null);
+        Point pos = this.getLocationOnScreen();
+        Point offset = new Point(-pos.x, -pos.y);
+        g.drawImage(background, offset.x, offset.y, null);
     }
 }

@@ -23,25 +23,25 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public List<Employee> selectEmployeeByDepartment(int departmentId) {
         String sql = "SELECT * FROM t_employee WHERE department_id = ?";
-        return Db.executeQuery(sql,new BeanListHandler<>(Employee.class),departmentId);
+        return Db.executeQuery(sql, new BeanListHandler<>(Employee.class), departmentId);
     }
 
     @Override
     public int insertEmployee(Employee employee) {
         String sql = "INSERT INTO `t_employee` (`name`, `produce_type`, `department_id`, `salary`) VALUES (?, ?, ?, ?);";
-        return Db.executeUpdate(sql,employee.getName(),employee.getProduceType(),employee.getDepartmentId(),employee.getSalary());
+        return Db.executeUpdate(sql, employee.getName(), employee.getProduceType(), employee.getDepartmentId(), employee.getSalary());
     }
 
     @Override
     public int updataEmployee(Employee employee) {
         String sql = "UPDATE t_employee SET name = ?, produce_type = ?, department_id = ?, salary = ? WHERE employee_id = ?";
-        return Db.executeUpdate(sql,employee.getName(),employee.getProduceType(),employee.getDepartmentId(),employee.getSalary(),employee.getEmployeeId());
+        return Db.executeUpdate(sql, employee.getName(), employee.getProduceType(), employee.getDepartmentId(), employee.getSalary(), employee.getEmployeeId());
     }
 
     @Override
     public int deleteEmployeeById(int employeeId) {
         String sql = "DELETE FROM t_employee WHERE employee_id = ?";
-        return Db.executeUpdate(sql,employeeId);
+        return Db.executeUpdate(sql, employeeId);
     }
 
 }

@@ -27,12 +27,12 @@ public class CustomerDaoImpl implements CustomerDao {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         List<Customer> customerList = convert(resultSet);
-        jdbcUtil.close(preparedStatement,resultSet);
+        jdbcUtil.close(preparedStatement, resultSet);
         return customerList;
     }
 
     @Override
-    public List<Customer> selectCustomerByEmployeeId(int employeeId) throws SQLException{
+    public List<Customer> selectCustomerByEmployeeId(int employeeId) throws SQLException {
         JDBCUtil jdbcUtil = JDBCUtil.getInitJdbcUtil();
         Connection connection = jdbcUtil.getConnection();
         String sql = "SELECT * FROM t_customer WHERE employee_id = ?";
@@ -42,11 +42,11 @@ public class CustomerDaoImpl implements CustomerDao {
         List<Customer> customerList = convert(resultSet);
         resultSet.close();
         preparedStatement.close();
-        jdbcUtil.close(preparedStatement,resultSet);
+        jdbcUtil.close(preparedStatement, resultSet);
         return customerList;
     }
 
-    private List<Customer> convert(ResultSet resultSet) throws SQLException{
+    private List<Customer> convert(ResultSet resultSet) throws SQLException {
         List<Customer> customerList = new ArrayList<>();
         while (resultSet.next()) {
             Customer customer = new Customer();

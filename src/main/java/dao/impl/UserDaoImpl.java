@@ -15,6 +15,6 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User findUserByAccount(String account) {
         String sql = "SELECT * FROM t_user WHERE username = ?";
-        return Db.executeQuery(sql, new BeanHandler<>(User.class),account);
+        return Db.executeQuery(sql, new BeanHandler<>(User.class), account);
     }
 }

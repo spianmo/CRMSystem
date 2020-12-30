@@ -29,6 +29,19 @@ public class AeroPane extends JPanel {
         installRepaintManager();
     }
 
+    public static BufferedImage changeImageWidth(BufferedImage image, int width) {
+        float ratio = (float) image.getWidth() / (float) image.getHeight();
+        int height = (int) (width / ratio);
+
+        BufferedImage temp = new BufferedImage(width, height, image.getType());
+        Graphics2D g2 = temp.createGraphics();
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.drawImage(image, 0, 0, temp.getWidth(), temp.getHeight(), null);
+        g2.dispose();
+
+        return temp;
+    }
+
     @Override
     public void paint(Graphics g) {
 
@@ -123,19 +136,6 @@ public class AeroPane extends JPanel {
     private void installRepaintManager() {
         ReflectionRepaintManager manager = new ReflectionRepaintManager();
         RepaintManager.setCurrentManager(manager);
-    }
-
-    public static BufferedImage changeImageWidth(BufferedImage image, int width) {
-        float ratio = (float) image.getWidth() / (float) image.getHeight();
-        int height = (int) (width / ratio);
-
-        BufferedImage temp = new BufferedImage(width, height, image.getType());
-        Graphics2D g2 = temp.createGraphics();
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g2.drawImage(image, 0, 0, temp.getWidth(), temp.getHeight(), null);
-        g2.dispose();
-
-        return temp;
     }
 
     private class ReflectionRepaintManager extends RepaintManager {

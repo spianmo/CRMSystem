@@ -37,12 +37,10 @@ public class RoundBorder implements Border {
     }
 
     @Override
-    public void paintBorder(Component c, Graphics g, int x, int y, int width,
-                            int height) {
+    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
         Graphics2D g2d = (Graphics2D) g;
         //圆角抗锯齿
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         g2d.setColor(color);
         g2d.drawRoundRect(0, 0, c.getWidth() - 1, c.getHeight() - 1, 15, 15);
