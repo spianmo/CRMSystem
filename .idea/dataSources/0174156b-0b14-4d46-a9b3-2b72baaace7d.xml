@@ -944,68 +944,64 @@
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="280" parent="232" name="employee_id">
+    <column id="280" parent="232" name="amount">
       <Position>4</Position>
-      <DataType>int(11)|0s</DataType>
-    </column>
-    <column id="281" parent="232" name="amount">
-      <Position>5</Position>
       <DataType>decimal(10)|0s</DataType>
     </column>
-    <column id="282" parent="232" name="produce_num">
-      <Position>6</Position>
+    <column id="281" parent="232" name="produce_num">
+      <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="283" parent="232" name="fk_t_customer_has_t_produce_t_customer1_idx">
+    <index id="282" parent="232" name="fk_t_customer_has_t_produce_t_customer1_idx">
       <ColNames>customer_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="284" parent="232" name="fk_t_customer_has_t_produce_t_produce1_idx">
+    <index id="283" parent="232" name="fk_t_customer_has_t_produce_t_produce1_idx">
       <ColNames>produce_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="285" parent="232" name="PRIMARY">
+    <key id="284" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>trade_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="286" parent="232" name="fk_t_customer_has_t_produce_t_customer1">
+    <foreign-key id="285" parent="232" name="fk_t_customer_has_t_produce_t_customer1">
       <ColNames>customer_id</ColNames>
       <RefTableName>t_customer</RefTableName>
       <RefColNames>customer_id</RefColNames>
     </foreign-key>
-    <foreign-key id="287" parent="232" name="fk_t_customer_has_t_produce_t_produce1">
+    <foreign-key id="286" parent="232" name="fk_t_customer_has_t_produce_t_produce1">
       <ColNames>produce_id</ColNames>
       <RefTableName>t_produce</RefTableName>
       <RefColNames>produce_id</RefColNames>
     </foreign-key>
-    <column id="288" parent="233" name="id">
+    <column id="287" parent="233" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="289" parent="233" name="username">
+    <column id="288" parent="233" name="username">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="290" parent="233" name="password">
+    <column id="289" parent="233" name="password">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="291" parent="233" name="email">
+    <column id="290" parent="233" name="email">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="292" parent="233" name="account_level">
+    <column id="291" parent="233" name="account_level">
       <Position>5</Position>
       <DataType>tinyint(4)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="293" parent="233" name="PRIMARY">
+    <key id="292" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

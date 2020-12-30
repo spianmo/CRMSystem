@@ -2,8 +2,6 @@ package service.impl;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import java.sql.SQLException;
-
 import bean.onLoginCallback;
 import dao.UserDao;
 import entity.User;
@@ -20,13 +18,7 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao = DaoFactory.getUserDaoInstance();
     @Override
     public void login(String account, String password, onLoginCallback callback) {
-        User user = null;
-        try{
-            user = userDao.findUserByAccount(account);
-        }catch (SQLException e){
-            callback.onLoginFaild("根据账号查找管理员信息出现SQL异常");
-            System.err.println("根据账号查找管理员信息出现SQL异常");
-        }
+        User user = userDao.findUserByAccount(account);
         if (user != null){
             if (DigestUtils.md5Hex(password).equals(user.getPassword())){
                 callback.onLoginSuccess("登陆成功",user);

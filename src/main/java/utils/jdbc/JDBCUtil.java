@@ -1,8 +1,10 @@
-package utils;
+package utils.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * @ClassName JdbcUtil
@@ -61,15 +63,23 @@ public class JDBCUtil {
     }
 
     /**
-     * 关闭连接
+     * 关闭连接（Connection连接对象必须在最后关闭）
+     * @param st 编译执行对象
+     * @param rs 结果集
      */
-    public void closeConnection() {
-        if (connection != null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                System.err.println(e.getMessage());
+    public void close(Statement st, ResultSet rs){
+        try {
+            if(rs != null){
+                rs.close();
             }
+            if(st != null){
+                st.close();
+            }
+            if(connection != null){
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

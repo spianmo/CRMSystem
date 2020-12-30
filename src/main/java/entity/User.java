@@ -24,7 +24,30 @@ public class User {
     private String password;
     private Level accountLevel;
 
-    public enum Level{
-        ADMIN,EMPLOYEE,CUSTOMER
+    public enum Level {
+        ADMIN(2), EMPLOYEE(1), CUSTOMER(0);
+
+        private Integer value;
+
+        Level(Integer value) {
+            this.value = value;
+        }
+
+        public static Level getEnum(int value) {
+            switch (value) {
+                case 0:
+                    return CUSTOMER;
+                case 1:
+                    return EMPLOYEE;
+                case 2:
+                    return ADMIN;
+                default:
+                    return null;
+            }
+        }
+        public Integer toInt() {
+            return this.value;
+        }
+
     }
 }

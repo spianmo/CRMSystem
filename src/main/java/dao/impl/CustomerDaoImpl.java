@@ -9,7 +9,7 @@ import java.util.List;
 
 import dao.CustomerDao;
 import entity.Customer;
-import utils.JDBCUtil;
+import utils.jdbc.JDBCUtil;
 
 /**
  * @ClassName CustomerDaoImpl
@@ -27,9 +27,7 @@ public class CustomerDaoImpl implements CustomerDao {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         List<Customer> customerList = convert(resultSet);
-        resultSet.close();
-        preparedStatement.close();
-        jdbcUtil.closeConnection();
+        jdbcUtil.close(preparedStatement,resultSet);
         return customerList;
     }
 
@@ -44,7 +42,7 @@ public class CustomerDaoImpl implements CustomerDao {
         List<Customer> customerList = convert(resultSet);
         resultSet.close();
         preparedStatement.close();
-        jdbcUtil.closeConnection();
+        jdbcUtil.close(preparedStatement,resultSet);
         return customerList;
     }
 
@@ -52,11 +50,12 @@ public class CustomerDaoImpl implements CustomerDao {
         List<Customer> customerList = new ArrayList<>();
         while (resultSet.next()) {
             Customer customer = new Customer();
-            customer.setEmployeeId(resultSet.getInt("employee_id"));
+            customer.setCustomerId(resultSet.getInt("customer_id"));
             customer.setName(resultSet.getString("name"));
             customer.setAddress(resultSet.getString("address"));
             customer.setCredit(resultSet.getInt("credit"));
             customer.setPhone(resultSet.getString("phone"));
+            customer.setEmployeeId(resultSet.getInt("employee_id"));
             customerList.add(customer);
         }
         return customerList;
