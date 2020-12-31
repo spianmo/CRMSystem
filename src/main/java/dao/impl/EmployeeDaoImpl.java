@@ -30,7 +30,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public int insertEmployee(Employee employee) {
-        @Language("SQL") String sql = "INSERT INTO `t_employee` (`name`, `produce_type`, `department_id`, `salary`) VALUES (?, ?, ?, ?);";
+        @Language("SQL") String sql = "INSERT INTO t_employee (name, produce_type, department_id, salary) VALUES (?, ?, ?, ?);";
         return Db.executeUpdate(sql, employee.getName(), employee.getProduceType(), employee.getDepartmentId(), employee.getSalary());
     }
 

@@ -3,7 +3,7 @@ package frame.runnable;
 
 import javax.swing.JLabel;
 
-import utils.RandomReadLineUtil;
+import utils.RandomLineUtil;
 
 /**
  * @ClassName OneTalkThread
@@ -13,10 +13,10 @@ import utils.RandomReadLineUtil;
  **/
 public class OneTalkThread implements Runnable {
     private JLabel oneTalkLabel;
-    private RandomReadLineUtil oneTalk;
+    private RandomLineUtil oneTalk;
 
     public OneTalkThread() {
-        oneTalk = new RandomReadLineUtil("hitokoto.txt");
+        oneTalk = new RandomLineUtil("hitokoto.txt");
     }
 
     public void setOneTalkLabel(JLabel oneTalkLabel) {

@@ -13,10 +13,10 @@ import static com.sun.org.apache.bcel.internal.util.SecuritySupport.getResourceA
  * @Author Finger
  * @Date 12/7/2020
  **/
-public class RandomReadLineUtil {
+public class RandomLineUtil {
     List<String> list = new ArrayList<>();
 
-    public RandomReadLineUtil(String fileName) {
+    public RandomLineUtil(String fileName) {
         BufferedReader reader = null;
         try {
             InputStreamReader read = new InputStreamReader(getResourceAsStream(fileName));

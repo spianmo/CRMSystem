@@ -6,12 +6,14 @@ import service.EmployeeService;
 import service.FeedbackService;
 import service.ProduceService;
 import service.TaskService;
+import service.TradeService;
 import service.UserService;
 import service.impl.CustomerServiceImpl;
 import service.impl.EmployeeServiceImpl;
 import service.impl.FeedbackServiceImpl;
 import service.impl.ProduceServiceImpl;
 import service.impl.TaskServiceImpl;
+import service.impl.TradeServiceImpl;
 import service.impl.UserServiceImpl;
 
 /**
@@ -43,5 +45,9 @@ public class ServiceFactory {
 
     public static ProduceService getProduceServiceInstance() {
         return new ProduceServiceImpl();
+    }
+
+    public static TradeService getTradeServiceInstance() {
+        return new TradeServiceImpl();
     }
 }

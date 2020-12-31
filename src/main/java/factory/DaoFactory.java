@@ -6,12 +6,14 @@ import dao.EmployeeDao;
 import dao.FeedbackDao;
 import dao.ProduceDao;
 import dao.TaskDao;
+import dao.TradeDao;
 import dao.UserDao;
 import dao.impl.CustomerDaoImpl;
 import dao.impl.EmployeeDaoImpl;
 import dao.impl.FeedbackDaoImpl;
 import dao.impl.ProduceDaoImpl;
 import dao.impl.TaskDaoImpl;
+import dao.impl.TradeDaoImpl;
 import dao.impl.UserDaoImpl;
 
 /**
@@ -43,5 +45,8 @@ public class DaoFactory {
 
     public static ProduceDao getProduceDaoInstance() {
         return new ProduceDaoImpl();
+    }
+
+    public static TradeDao getTradeDaoInstance() {return new TradeDaoImpl();
     }
 }
