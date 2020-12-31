@@ -1,9 +1,9 @@
 package dao;
 
+import entity.Customer;
+
 import java.sql.SQLException;
 import java.util.List;
-
-import entity.Customer;
 
 /**
  * @ClassName CustomerDao
@@ -26,4 +26,6 @@ public interface CustomerDao {
      * @throws SQLException SQL查询异常
      */
     List<Customer> selectCustomerByEmployeeId(int employeeId) throws SQLException;
+
+
 }
