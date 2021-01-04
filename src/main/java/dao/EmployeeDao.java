@@ -1,8 +1,8 @@
 package dao;
 
-import entity.Employee;
-
 import java.util.List;
+
+import entity.Employee;
 
 /**
  * 员工实体操作的Dao数据访问层
@@ -10,6 +10,13 @@ import java.util.List;
  * @author Finger
  */
 public interface EmployeeDao {
+
+    /**
+     * 根据用户ID查询用户
+     * @param userId 用户ID
+     * @return
+     */
+    Employee selectByUserId(String userId);
     /**
      * 查询所有的员工
      *

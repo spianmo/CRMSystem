@@ -25,4 +25,5 @@ public class Employee {
     private String produceType;
     private int departmentId;
     private BigDecimal salary;
+    private int userId;
 }

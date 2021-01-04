@@ -51,10 +51,10 @@ public class LoginFrame extends NoBorderJFrame {
                             new AdminMainFrame("管理员:" + user.getUsername());
                             break;
                         case EMPLOYEE:
-                            new EmployeeMainFrame("员工:" + user.getUsername(),user.getId());
+                            new EmployeeMainFrame("员工:" + user.getUsername(),ServiceFactory.getEmployeeServiceInstance().selectByUserId(String.valueOf(user.getId())));
                             break;
                         case CUSTOMER:
-                            new CustomerMainFrame("客户:" + user.getUsername());
+                            new CustomerMainFrame("客户:" + user.getUsername(),ServiceFactory.getCustomerServiceInstance().selectByUserId(String.valueOf(user.getId())));
                             break;
                         default:
                             MaterialOptionPane.showMessageDialog("账号身份异常！");

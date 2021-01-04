@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import compent.NoBorderJFrame;
+import entity.Customer;
 import frame.runnable.OneTalkThread;
 import frame.runnable.TimeThread;
 
@@ -49,8 +50,34 @@ public class CustomerMainFrame extends NoBorderJFrame {
     private JLabel oneTalkLabel;
     private JLabel timeLabel;
     private CardLayout cardLayout;
+    private Customer mCustomer;
+
     public CustomerMainFrame(String title) {
         this.toFront();
+        this.mCustomer = Customer.builder()
+                .customerId(1)
+                .address("江苏省南京市栖霞区羊山北路一号")
+                .name("唐钱进")
+                .credit(90)
+                .phone("13861948872")
+                .employeeId(1)
+                .userId(1)
+                .build();
+        mainTitle.setText("   CRM SYSTEM " + title);
+        oneTalkLabel.setText(title);
+        OneTalkThread oneTalkThread = new OneTalkThread();
+        oneTalkThread.setOneTalkLabel(oneTalkLabel);
+        new Thread(oneTalkThread).start();
+
+        TimeThread timeThread = new TimeThread();
+        timeThread.setTimeLabel(timeLabel);
+        new Thread(timeThread).start();
+
+        initComponent();
+    }
+    public CustomerMainFrame(String title,Customer customer) {
+        this.toFront();
+        this.mCustomer = customer;
         mainTitle.setText("   CRM SYSTEM " + title);
         oneTalkLabel.setText(title);
         OneTalkThread oneTalkThread = new OneTalkThread();

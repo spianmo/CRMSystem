@@ -5,6 +5,7 @@ import java.util.List;
 import entity.Customer;
 
 public interface CustomerService {
+    Customer selectByUserId(String customerId);
     /**
      * 查询所有的客户
      * @return 所有的客户实体集

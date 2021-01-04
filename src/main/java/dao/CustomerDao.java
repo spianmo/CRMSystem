@@ -12,6 +12,13 @@ import entity.Customer;
  * @Date 12/28/2020
  **/
 public interface CustomerDao {
+
+    /**
+     * 根据用户ID查询用户
+     * @param userId 用户ID
+     * @return
+     */
+    Customer selectByUserId(String userId);
     /**
      * 查询所有的客户
      * @return 所有的客户实体集

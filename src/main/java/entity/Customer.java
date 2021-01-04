@@ -25,4 +25,5 @@ public class Customer {
     private String address;
     private int credit;
     private String phone;
+    private int userId;
 }

@@ -20,6 +20,11 @@ public class CustomerServiceImpl implements CustomerService {
     CustomerDao mCustomerDao = DaoFactory.getCustomerDaoInstance();
 
     @Override
+    public Customer selectByUserId(String customerId) {
+        return mCustomerDao.selectByUserId(customerId);
+    }
+
+    @Override
     public List<Customer> selectAll() {
         List<Customer> customerList = new ArrayList<>();
         try {

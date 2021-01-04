@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -28,6 +29,7 @@ import javax.swing.table.JTableHeader;
 import compent.MyJScrollBar;
 import compent.NoBorderJFrame;
 import entity.Customer;
+import entity.Employee;
 import factory.ServiceFactory;
 import frame.runnable.OneTalkThread;
 import frame.runnable.TimeThread;
@@ -69,11 +71,11 @@ public class EmployeeMainFrame extends NoBorderJFrame {
     private CardLayout cardLayout;
     private JTextField searchField;
     private JButton 搜索Button;
-    private int mEmployeeId;
+    private Employee mEmployee;
 
-    public EmployeeMainFrame(String title,int employeeId) {
+    public EmployeeMainFrame(String title, Employee employee) {
         this.toFront();
-        this.mEmployeeId = employeeId;
+        this.mEmployee = employee;
         mainTitle.setText("   CRM SYSTEM " + title);
         oneTalkLabel.setText(title);
         OneTalkThread oneTalkThread = new OneTalkThread();
@@ -89,6 +91,13 @@ public class EmployeeMainFrame extends NoBorderJFrame {
 
     public EmployeeMainFrame(String title) {
         this.toFront();
+        this.mEmployee = Employee.builder()
+                .employeeId(1)
+                .departmentId(1)
+                .name("kirito")
+                .produceType("主机类")
+                .salary(new BigDecimal("24000"))
+                .userId(1).build();
         mainTitle.setText("   CRM SYSTEM " + title);
         oneTalkLabel.setText(title);
         OneTalkThread oneTalkThread = new OneTalkThread();
@@ -148,7 +157,7 @@ public class EmployeeMainFrame extends NoBorderJFrame {
             反馈处理Button.setBackground(COLOR_CYAN);
             cardLayout.show(centerPanel, "2");
 
-            showCustomers(ServiceFactory.getCustomerServiceInstance().selectCustomerByEmployeeId(this.mEmployeeId));
+            showCustomers(ServiceFactory.getCustomerServiceInstance().selectCustomerByEmployeeId(this.mEmployee.getEmployeeId()));
         });
         计划管理Button.addActionListener(e -> {
             员工信息Button.setIcon(new ImageIcon("img/icon1white.png"));

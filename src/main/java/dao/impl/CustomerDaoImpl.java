@@ -1,5 +1,7 @@
 package dao.impl;
 
+import org.intellij.lang.annotations.Language;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +11,8 @@ import java.util.List;
 
 import dao.CustomerDao;
 import entity.Customer;
+import utils.jdbc.BeanHandler;
+import utils.jdbc.Db;
 import utils.jdbc.JDBCUtil;
 
 /**
@@ -18,6 +22,12 @@ import utils.jdbc.JDBCUtil;
  * @Date 12/28/2020
  **/
 public class CustomerDaoImpl implements CustomerDao {
+
+    @Override
+    public Customer selectByUserId(String userId) {
+        @Language("SQL") String sql = "SELECT * FROM t_customer WHERE user_id = ?";
+        return Db.executeQuery(sql,new BeanHandler<>(Customer.class),userId);
+    }
 
     @Override
     public List<Customer> selectAll() throws SQLException {

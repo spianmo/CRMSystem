@@ -274,6 +274,12 @@ ALTER TABLE `t_feedback`
 ALTER TABLE `t_task`
     ADD CONSTRAINT `fk_t_task_t_employee1` FOREIGN KEY (`employee_id`) REFERENCES `t_employee` (`employee_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+ALTER TABLE `t_employee`
+    ADD CONSTRAINT `fk_t_employee_t_user1` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE `t_customer`
+    ADD CONSTRAINT `fk_t_customer_t_user1` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 --
 -- Constraints for table `t_trade`
 --

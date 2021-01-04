@@ -1,12 +1,14 @@
 package dao.impl;
 
-import dao.EmployeeDao;
-import entity.Employee;
 import org.intellij.lang.annotations.Language;
-import utils.jdbc.BeanListHandler;
-import utils.jdbc.Db;
 
 import java.util.List;
+
+import dao.EmployeeDao;
+import entity.Employee;
+import utils.jdbc.BeanHandler;
+import utils.jdbc.BeanListHandler;
+import utils.jdbc.Db;
 
 /**
  * @ClassName EmployeeDao的Impl实现类
@@ -15,6 +17,12 @@ import java.util.List;
  * @Date 12/30/2020
  **/
 public class EmployeeDaoImpl implements EmployeeDao {
+    @Override
+    public Employee selectByUserId(String userId) {
+        @Language("SQL") String sql = "SELECT * FROM t_employee WHERE user_id = ?";
+        return Db.executeQuery(sql, new BeanHandler<>(Employee.class),userId);
+    }
+
     @Override
     public List<Employee> selectAllEmployee() {
         @Language("SQL") String sql = "SELECT * FROM t_employee";
