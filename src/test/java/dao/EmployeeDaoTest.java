@@ -33,7 +33,7 @@ class EmployeeDaoTest {
 
     @Test
     void updataEmployee() {
-        System.out.println(employeeDao.updataEmployee(Employee.builder()
+        System.out.println(employeeDao.updateEmployee(Employee.builder()
                 .employeeId(12)
                 .name("余欣婷修改")
                 .departmentId(2)

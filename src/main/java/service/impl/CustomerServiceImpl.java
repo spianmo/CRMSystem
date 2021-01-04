@@ -18,6 +18,7 @@ import service.CustomerService;
 public class CustomerServiceImpl implements CustomerService {
 
     CustomerDao mCustomerDao = DaoFactory.getCustomerDaoInstance();
+
     @Override
     public List<Customer> selectAll() {
         List<Customer> customerList = new ArrayList<>();

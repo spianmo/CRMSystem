@@ -51,7 +51,7 @@ public class LoginFrame extends NoBorderJFrame {
                             new AdminMainFrame("管理员:" + user.getUsername());
                             break;
                         case EMPLOYEE:
-                            new EmployeeMainFrame("员工:" + user.getUsername());
+                            new EmployeeMainFrame("员工:" + user.getUsername(),user.getId());
                             break;
                         case CUSTOMER:
                             new CustomerMainFrame("客户:" + user.getUsername());

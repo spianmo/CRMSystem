@@ -69,6 +69,23 @@ public class EmployeeMainFrame extends NoBorderJFrame {
     private CardLayout cardLayout;
     private JTextField searchField;
     private JButton 搜索Button;
+    private int mEmployeeId;
+
+    public EmployeeMainFrame(String title,int employeeId) {
+        this.toFront();
+        this.mEmployeeId = employeeId;
+        mainTitle.setText("   CRM SYSTEM " + title);
+        oneTalkLabel.setText(title);
+        OneTalkThread oneTalkThread = new OneTalkThread();
+        oneTalkThread.setOneTalkLabel(oneTalkLabel);
+        new Thread(oneTalkThread).start();
+
+        TimeThread timeThread = new TimeThread();
+        timeThread.setTimeLabel(timeLabel);
+        new Thread(timeThread).start();
+
+        initComponent();
+    }
 
     public EmployeeMainFrame(String title) {
         this.toFront();
@@ -131,7 +148,7 @@ public class EmployeeMainFrame extends NoBorderJFrame {
             反馈处理Button.setBackground(COLOR_CYAN);
             cardLayout.show(centerPanel, "2");
 
-            showCustomers(ServiceFactory.getCustomerServiceInstance().selectAll());
+            showCustomers(ServiceFactory.getCustomerServiceInstance().selectCustomerByEmployeeId(this.mEmployeeId));
         });
         计划管理Button.addActionListener(e -> {
             员工信息Button.setIcon(new ImageIcon("img/icon1white.png"));
