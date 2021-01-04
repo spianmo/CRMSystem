@@ -1,12 +1,8 @@
 package entity;
 
-import java.sql.Date;
+import lombok.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import java.sql.Date;
 
 /**
  * @ClassName Feedback
@@ -20,6 +16,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Feedback {
+    private int produceId;
+    private int customerId;
     private int feedbackId;
     private String content;
     private Date createTime;

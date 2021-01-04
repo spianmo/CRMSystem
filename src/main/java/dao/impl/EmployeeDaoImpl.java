@@ -1,13 +1,12 @@
 package dao.impl;
 
-import org.intellij.lang.annotations.Language;
-
-import java.util.List;
-
 import dao.EmployeeDao;
 import entity.Employee;
+import org.intellij.lang.annotations.Language;
 import utils.jdbc.BeanListHandler;
 import utils.jdbc.Db;
+
+import java.util.List;
 
 /**
  * @ClassName EmployeeDao的Impl实现类
@@ -35,7 +34,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public int updataEmployee(Employee employee) {
+    public int updateEmployee(Employee employee) {
         @Language("SQL") String sql = "UPDATE t_employee SET name = ?, produce_type = ?, department_id = ?, salary = ? WHERE employee_id = ?";
         return Db.executeUpdate(sql, employee.getName(), employee.getProduceType(), employee.getDepartmentId(), employee.getSalary(), employee.getEmployeeId());
     }

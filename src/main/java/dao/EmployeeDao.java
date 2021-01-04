@@ -1,8 +1,8 @@
 package dao;
 
-import java.util.List;
-
 import entity.Employee;
+
+import java.util.List;
 
 /**
  * 员工实体操作的Dao数据访问层
@@ -39,7 +39,7 @@ public interface EmployeeDao {
      * @param employee 需要更新的员工对象
      * @return 返回影响行数
      */
-    int updataEmployee(Employee employee);
+    int updateEmployee(Employee employee);
 
     /**
      * 根据员工ID删除员工
