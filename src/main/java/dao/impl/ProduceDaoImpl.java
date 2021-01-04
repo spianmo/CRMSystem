@@ -42,8 +42,8 @@ public class ProduceDaoImpl implements ProduceDao {
 
     @Override
     public int updateProduce(Produce produce) {
-        @Language("SQL") String sql = "UPDATE t_produce SET name = ?, price = ?, produce_date = ?, produce_type = ?";
-        return Db.executeUpdate(sql, produce.getName(), produce.getPrice(), produce.getProduceDate(), produce.getProduceType());
+        @Language("SQL") String sql = "UPDATE t_produce SET name = ?, price = ?, produce_date = ?, produce_type = ? WHERE produce_id = ?";
+        return Db.executeUpdate(sql, produce.getName(), produce.getPrice(), produce.getProduceDate(),produce.getProduceType(),produce.getProduceId());
     }
 
     @Override

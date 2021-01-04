@@ -1,11 +1,10 @@
 package dao;
 
+import entity.Employee;
+import factory.DaoFactory;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-
-import entity.Employee;
-import factory.DaoFactory;
 
 class EmployeeDaoTest {
     EmployeeDao employeeDao = DaoFactory.getEmployeeDaoInstance();
@@ -32,7 +31,7 @@ class EmployeeDaoTest {
     }
 
     @Test
-    void updataEmployee() {
+    void updateEmployee() {
         System.out.println(employeeDao.updateEmployee(Employee.builder()
                 .employeeId(12)
                 .name("余欣婷修改")
