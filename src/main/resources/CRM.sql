@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 30, 2020 at 11:53 PM
+-- Generation Time: Jan 04, 2021 at 08:15 AM
 -- Server version: 5.7.26
 -- PHP Version: 5.6.9
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `opencrm`
 --
+CREATE DATABASE IF NOT EXISTS `opencrm` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `opencrm`;
 
 -- --------------------------------------------------------
 
@@ -97,6 +99,13 @@ CREATE TABLE `t_produce` (
                              `produce_type` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `t_produce`
+--
+
+INSERT INTO `t_produce` (`produce_id`, `name`, `price`, `produce_date`, `produce_type`) VALUES
+(1, 'MacBookPro 2020', '14999', '2020-12-16', '笔记本');
+
 -- --------------------------------------------------------
 
 --
@@ -124,6 +133,13 @@ CREATE TABLE `t_trade` (
                            `produce_num` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `t_trade`
+--
+
+INSERT INTO `t_trade` (`customer_id`, `produce_id`, `trade_id`, `amount`, `produce_num`) VALUES
+(1, 1, 1, '14999', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -143,7 +159,9 @@ CREATE TABLE `t_user` (
 --
 
 INSERT INTO `t_user` (`id`, `username`, `password`, `email`, `account_level`) VALUES
-(1, 'kirito', 'e10adc3949ba59abbe56e057f20f883e', 'finger@spianmo.com', 'EMPLOYEE');
+(1, 'kirito', 'e10adc3949ba59abbe56e057f20f883e', 'finger@spianmo.com', 'EMPLOYEE'),
+(2, 'shinonon', 'e10adc3949ba59abbe56e057f20f883e', 'shinonon@spianmo.com', 'ADMIN'),
+(3, 'testcus1', 'e10adc3949ba59abbe56e057f20f883e', 'testcus1@spianmo.com', 'CUSTOMER');
 
 --
 -- Indexes for dumped tables
@@ -225,13 +243,13 @@ ALTER TABLE `t_task`
 -- AUTO_INCREMENT for table `t_trade`
 --
 ALTER TABLE `t_trade`
-    MODIFY `trade_id` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `trade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `t_user`
 --
 ALTER TABLE `t_user`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

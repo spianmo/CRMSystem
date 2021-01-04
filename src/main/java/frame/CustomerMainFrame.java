@@ -51,7 +51,7 @@ public class CustomerMainFrame extends NoBorderJFrame {
     private CardLayout cardLayout;
     public CustomerMainFrame(String title) {
         this.toFront();
-        mainTitle.setText("   CRM System " + title);
+        mainTitle.setText("   CRM SYSTEM " + title);
         oneTalkLabel.setText(title);
         OneTalkThread oneTalkThread = new OneTalkThread();
         oneTalkThread.setOneTalkLabel(oneTalkLabel);

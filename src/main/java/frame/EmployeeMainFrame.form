@@ -147,7 +147,51 @@
                   <background color="-1"/>
                 </properties>
                 <border type="none"/>
-                <children/>
+                <children>
+                  <grid id="16b05" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <background color="-1"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="e2477" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
+                        <constraints border-constraint="Center"/>
+                        <properties>
+                          <background color="-1"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="b4878" class="javax.swing.JTextField" binding="searchField">
+                            <constraints/>
+                            <properties>
+                              <font name="Microsoft YaHei" size="18" style="0"/>
+                              <preferredSize width="180" height="36"/>
+                            </properties>
+                          </component>
+                          <component id="beff8" class="javax.swing.JButton" binding="搜索Button" default-binding="true">
+                            <constraints/>
+                            <properties>
+                              <background color="-11309570"/>
+                              <borderPainted value="false"/>
+                              <focusPainted value="false"/>
+                              <font name="Microsoft YaHei" size="16" style="0"/>
+                              <foreground color="-1"/>
+                              <preferredSize width="100" height="36"/>
+                              <text value="搜索"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="592b" binding="tablePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="Center"/>
+                    <properties/>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                </children>
               </grid>
               <grid id="bde0d" binding="taskManagePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                 <constraints>
