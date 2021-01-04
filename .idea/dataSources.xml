@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="opencrm@localhost" uuid="0174156b-0b14-4d46-a9b3-2b72baaace7d">
+    <data-source source="LOCAL" name="OpenCRM@localhost" uuid="a558430e-1506-41a1-bce6-7055de8a7963">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/opencrm</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/OpenCRM</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
