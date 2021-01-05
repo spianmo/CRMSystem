@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="1012.0" y="452.0">dao.UserDao</node>
+    <node x="1288.5" y="186.0">factory.ServiceFactory</node>
+    <node x="-30.0" y="641.0">utils.jdbc.HumpUtil</node>
+    <node x="268.0" y="772.0">utils.jdbc.IResultSetHandler</node>
+    <node x="984.0" y="586.0">factory.DaoFactory</node>
+    <node x="1663.5" y="452.0">service.UserService</node>
+    <node x="612.0" y="652.0">dao.impl.UserDaoImpl</node>
+    <node x="549.5" y="761.0">utils.jdbc.Db</node>
+    <node x="1303.5" y="452.0">service.impl.UserServiceImpl</node>
+    <node x="1358.0" y="-10.5">frame.LoginFrame</node>
+    <node x="271.0" y="640.5">utils.jdbc.BeanHandler</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="utils.jdbc.BeanHandler" target="utils.jdbc.HumpUtil">
+      <point x="-89.0" y="-0.0" />
+      <point x="110.0" y="-0.0" />
+    </edge>
+    <edge source="service.impl.UserServiceImpl" target="factory.DaoFactory">
+      <point x="0.0" y="28.0" />
+      <point x="1440.0" y="680.0" />
+      <point x="136.0" y="-0.0" />
+    </edge>
+    <edge source="factory.DaoFactory" target="dao.UserDao">
+      <point x="0.0" y="-94.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="utils.jdbc.Db" target="utils.jdbc.IResultSetHandler">
+      <point x="-170.5" y="-0.0" />
+      <point x="92.0" y="-0.0" />
+    </edge>
+    <edge source="factory.DaoFactory" target="dao.impl.UserDaoImpl">
+      <point x="-136.0" y="-0.0" />
+      <point x="108.0" y="-0.0" />
+    </edge>
+    <edge source="factory.ServiceFactory" target="service.UserService">
+      <point x="151.5" y="-0.0" />
+      <point x="1800.0" y="280.0" />
+      <point x="0.0" y="-28.0" />
+    </edge>
+    <edge source="dao.impl.UserDaoImpl" target="utils.jdbc.BeanHandler">
+      <point x="-108.0" y="-0.0" />
+      <point x="89.0" y="-0.0" />
+    </edge>
+    <edge source="dao.impl.UserDaoImpl" target="utils.jdbc.Db">
+      <point x="0.0" y="28.0" />
+      <point x="0.0" y="-39.0" />
+    </edge>
+    <edge source="frame.LoginFrame" target="factory.ServiceFactory">
+      <point x="0.0" y="50.5" />
+      <point x="0.0" y="-94.0" />
+    </edge>
+    <edge source="service.impl.UserServiceImpl" target="dao.UserDao">
+      <point x="-136.5" y="-0.0" />
+      <point x="108.0" y="-0.0" />
+    </edge>
+    <edge source="service.impl.UserServiceImpl" target="service.UserService">
+      <point x="136.5" y="-0.0" />
+      <point x="-136.5" y="-0.0" />
+    </edge>
+    <edge source="dao.impl.UserDaoImpl" target="dao.UserDao">
+      <point x="0.0" y="-28.0" />
+      <point x="720.0" y="480.0" />
+      <point x="-108.0" y="-0.0" />
+    </edge>
+    <edge source="utils.jdbc.BeanHandler" target="utils.jdbc.IResultSetHandler">
+      <point x="0.0" y="39.5" />
+      <point x="0.0" y="-28.0" />
+    </edge>
+    <edge source="factory.ServiceFactory" target="service.impl.UserServiceImpl">
+      <point x="0.0" y="94.0" />
+      <point x="0.0" y="-28.0" />
+    </edge>
+  </edges>
+  <settings layout="Directed Orthogonal" zoom="0.591343734272773" x="953.5000000000001" y="414.0" />
+  <SelectedNodes>
+    <node>frame.LoginFrame</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
