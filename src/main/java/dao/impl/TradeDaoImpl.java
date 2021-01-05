@@ -1,14 +1,13 @@
 package dao.impl;
 
-import org.intellij.lang.annotations.Language;
-
-import java.util.List;
-
 import dao.TradeDao;
 import entity.Trade;
+import org.intellij.lang.annotations.Language;
 import utils.jdbc.BeanHandler;
 import utils.jdbc.BeanListHandler;
 import utils.jdbc.Db;
+
+import java.util.List;
 
 /**
  * @ClassName TradeDaoImpl
@@ -27,6 +26,12 @@ public class TradeDaoImpl implements TradeDao {
     public List<Trade> selectTradeByCustomerId(int customerId) {
         @Language("SQL") String sql = "SELECT * FROM t_trade WHERE t_trade.customer_id";
         return Db.executeQuery(sql, new BeanListHandler<>(Trade.class), customerId);
+    }
+
+    @Override
+    public List<Trade> selectTradeByEmployeeId(int employeeId) {
+        @Language("SQL") String sql = "SELECT * FROM t_trade WHERE t_employee.employee_id =?";
+        return Db.executeQuery(sql, new BeanListHandler<>(Trade.class),employeeId);
     }
 
     @Override
