@@ -10,4 +10,5 @@ import entity.Employee;
  **/
 public interface EmployeeService {
     Employee selectByUserId(String employeeId);
+    java.util.List<Employee> selectAllEmployee();
 }

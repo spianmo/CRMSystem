@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 04, 2021 at 08:15 AM
+-- Generation Time: Jan 05, 2021 at 01:22 PM
 -- Server version: 5.7.26
 -- PHP Version: 5.6.9
 
@@ -36,18 +36,19 @@ CREATE TABLE `t_customer` (
                               `address` varchar(100) DEFAULT NULL,
                               `credit` int(11) DEFAULT NULL,
                               `phone` varchar(20) DEFAULT NULL,
-                              `employee_id` int(11) NOT NULL
+                              `employee_id` int(11) NOT NULL,
+                              `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `t_customer`
 --
 
-INSERT INTO `t_customer` (`customer_id`, `name`, `address`, `credit`, `phone`, `employee_id`) VALUES
-(1, '唐钱进', '江苏省南京市栖霞区羊山北路一号', 90, '13861948872', 1),
-(2, '余欣婷', '江苏省南京市栖霞区羊山北路一号', 90, '13861948872', 1),
-(3, '唐小余', '江苏省南通市如东县洋口镇', 80, '13861948872', 1),
-(4, '余小唐', '江西省抚州市临川区', 80, '13861948872', 1);
+INSERT INTO `t_customer` (`customer_id`, `name`, `address`, `credit`, `phone`, `employee_id`, `user_id`) VALUES
+(1, '唐钱进', '江苏省南京市栖霞区羊山北路一号', 90, '13861948872', 1, 3),
+(2, '余欣婷', '江苏省南京市栖霞区羊山北路一号', 90, '13861948872', 1, 4),
+(3, '唐小余', '江苏省南通市如东县洋口镇', 80, '13861948872', 1, 5),
+(4, '余小唐', '江西省抚州市临川区', 80, '13861948872', 1, 6);
 
 -- --------------------------------------------------------
 
@@ -60,15 +61,16 @@ CREATE TABLE `t_employee` (
                               `name` varchar(45) DEFAULT NULL,
                               `produce_type` varchar(45) DEFAULT NULL,
                               `department_id` int(11) DEFAULT NULL,
-                              `salary` decimal(10,0) DEFAULT NULL
+                              `salary` decimal(10,0) DEFAULT NULL,
+                              `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `t_employee`
 --
 
-INSERT INTO `t_employee` (`employee_id`, `name`, `produce_type`, `department_id`, `salary`) VALUES
-(1, 'kirito', '主机类', 1, '24000');
+INSERT INTO `t_employee` (`employee_id`, `name`, `produce_type`, `department_id`, `salary`, `user_id`) VALUES
+(1, 'kirito', '主机类', 1, '24000', 1);
 
 -- --------------------------------------------------------
 
@@ -116,7 +118,8 @@ CREATE TABLE `t_task` (
                           `task_id` int(11) NOT NULL,
                           `task_time` date DEFAULT NULL,
                           `customer_num` int(11) DEFAULT NULL,
-                          `employee_id` int(11) NOT NULL
+                          `employee_id` int(11) NOT NULL,
+                          `task_status` enum('VERYGOOD','GOOD','COMMON','BAD','VERYBAD') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -161,7 +164,10 @@ CREATE TABLE `t_user` (
 INSERT INTO `t_user` (`id`, `username`, `password`, `email`, `account_level`) VALUES
 (1, 'kirito', 'e10adc3949ba59abbe56e057f20f883e', 'finger@spianmo.com', 'EMPLOYEE'),
 (2, 'shinonon', 'e10adc3949ba59abbe56e057f20f883e', 'shinonon@spianmo.com', 'ADMIN'),
-(3, 'testcus1', 'e10adc3949ba59abbe56e057f20f883e', 'testcus1@spianmo.com', 'CUSTOMER');
+(3, 'testcus1', 'e10adc3949ba59abbe56e057f20f883e', 'testcus1@spianmo.com', 'CUSTOMER'),
+(4, 'testcus2', 'e10adc3949ba59abbe56e057f20f883e', 'testcus1@spianmo.com', 'CUSTOMER'),
+(5, 'testcus3', 'e10adc3949ba59abbe56e057f20f883e', 'testcus1@spianmo.com', 'CUSTOMER'),
+(6, 'testcus4', 'e10adc3949ba59abbe56e057f20f883e', 'testcus1@spianmo.com', 'CUSTOMER');
 
 --
 -- Indexes for dumped tables
@@ -172,14 +178,16 @@ INSERT INTO `t_user` (`id`, `username`, `password`, `email`, `account_level`) VA
 --
 ALTER TABLE `t_customer`
     ADD PRIMARY KEY (`customer_id`),
-    ADD KEY `fk_t_customer_t_employee1_idx` (`employee_id`);
+    ADD KEY `fk_t_customer_t_employee1_idx` (`employee_id`),
+    ADD KEY `fk_t_customer_t_user1` (`user_id`);
 
 --
 -- Indexes for table `t_employee`
 --
 ALTER TABLE `t_employee`
     ADD PRIMARY KEY (`employee_id`),
-    ADD UNIQUE KEY `employee_id_UNIQUE` (`employee_id`);
+    ADD UNIQUE KEY `employee_id_UNIQUE` (`employee_id`),
+    ADD KEY `fk_t_employee_t_user1` (`user_id`);
 
 --
 -- Indexes for table `t_feedback`
@@ -249,7 +257,7 @@ ALTER TABLE `t_trade`
 -- AUTO_INCREMENT for table `t_user`
 --
 ALTER TABLE `t_user`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -259,7 +267,14 @@ ALTER TABLE `t_user`
 -- Constraints for table `t_customer`
 --
 ALTER TABLE `t_customer`
-    ADD CONSTRAINT `fk_t_customer_t_employee1` FOREIGN KEY (`employee_id`) REFERENCES `t_employee` (`employee_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ADD CONSTRAINT `fk_t_customer_t_employee1` FOREIGN KEY (`employee_id`) REFERENCES `t_employee` (`employee_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    ADD CONSTRAINT `fk_t_customer_t_user1` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `t_employee`
+--
+ALTER TABLE `t_employee`
+    ADD CONSTRAINT `fk_t_employee_t_user1` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `t_feedback`
@@ -273,12 +288,6 @@ ALTER TABLE `t_feedback`
 --
 ALTER TABLE `t_task`
     ADD CONSTRAINT `fk_t_task_t_employee1` FOREIGN KEY (`employee_id`) REFERENCES `t_employee` (`employee_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-ALTER TABLE `t_employee`
-    ADD CONSTRAINT `fk_t_employee_t_user1` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-ALTER TABLE `t_customer`
-    ADD CONSTRAINT `fk_t_customer_t_user1` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `t_trade`

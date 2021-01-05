@@ -2,6 +2,7 @@ package entity;
 
 import java.sql.Date;
 
+import bean.BaseEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,4 +25,46 @@ public class Task {
     private int employeeId;
     private Date taskTime;
     private String customerNum;
+    private TaskStatus taskStatus;
+
+    public enum TaskStatus implements BaseEnum {
+        /**
+         * 非常好
+         */
+        VERYGOOD(0,"非常好"),
+        /**
+         * 好
+         */
+        GOOD(1,"好"),
+        /**
+         * 一般
+         */
+        COMMON(2,"一般"),
+        /**
+         * 差
+         */
+        BAD(3,"差"),
+        /**
+         * 非常差
+         */
+        VERYBAD(4,"非常差");
+
+        private final Integer value;
+        private final String desc;
+
+        TaskStatus(Integer value,String desc) {
+            this.value = value;
+            this.desc = desc;
+        }
+
+        @Override
+        public Integer getCode() {
+            return this.value;
+        }
+
+        @Override
+        public String getDesc() {
+            return this.desc;
+        }
+    }
 }

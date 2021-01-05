@@ -26,8 +26,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import compent.JTextFieldHintListener;
 import compent.MyJScrollBar;
 import compent.NoBorderJFrame;
+import compent.RoundBorder;
 import entity.Customer;
 import entity.Employee;
 import factory.ServiceFactory;
@@ -69,8 +71,8 @@ public class EmployeeMainFrame extends NoBorderJFrame {
     private JLabel timeLabel;
     private JPanel tablePanel;
     private CardLayout cardLayout;
-    private JTextField searchField;
-    private JButton 搜索Button;
+    private JTextField searchCustomerField;
+    private JButton 搜索CustomerButton;
     private Employee mEmployee;
 
     public EmployeeMainFrame(String title, Employee employee) {
@@ -303,5 +305,12 @@ public class EmployeeMainFrame extends NoBorderJFrame {
         exitBtn.addActionListener(actionEvent -> {
             this.dispose();
         });
+
+        initPanelContentCompent();
+    }
+
+    public void initPanelContentCompent(){
+        searchCustomerField.addFocusListener(new JTextFieldHintListener(searchCustomerField, " 搜索关键字...", Font.PLAIN));
+        searchCustomerField.setBorder(new RoundBorder(Color.LIGHT_GRAY));
     }
 }

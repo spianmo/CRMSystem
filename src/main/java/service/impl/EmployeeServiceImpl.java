@@ -17,4 +17,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee selectByUserId(String employeeId) {
         return mEmployeeDao.selectByUserId(employeeId);
     }
+
+    @Override
+    public java.util.List<Employee> selectAllEmployee(){
+        return mEmployeeDao.selectAllEmployee();
+    }
 }

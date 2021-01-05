@@ -162,14 +162,14 @@
                         </properties>
                         <border type="none"/>
                         <children>
-                          <component id="b4878" class="javax.swing.JTextField" binding="searchField">
+                          <component id="b4878" class="javax.swing.JTextField" binding="searchCustomerField">
                             <constraints/>
                             <properties>
                               <font name="Microsoft YaHei" size="18" style="0"/>
                               <preferredSize width="180" height="36"/>
                             </properties>
                           </component>
-                          <component id="beff8" class="javax.swing.JButton" binding="搜索Button" default-binding="true">
+                          <component id="beff8" class="javax.swing.JButton" binding="搜索CustomerButton" default-binding="true">
                             <constraints/>
                             <properties>
                               <background color="-11309570"/>
