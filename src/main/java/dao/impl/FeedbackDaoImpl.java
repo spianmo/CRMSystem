@@ -1,12 +1,13 @@
 package dao.impl;
 
-import dao.FeedbackDao;
-import entity.Feedback;
 import org.intellij.lang.annotations.Language;
-import utils.jdbc.BeanListHandler;
-import utils.jdbc.Db;
 
 import java.util.List;
+
+import dao.FeedbackDao;
+import entity.Feedback;
+import utils.jdbc.BeanListHandler;
+import utils.jdbc.Db;
 
 /**
  * @ClassName FeedbackDaoImpl
@@ -47,8 +48,8 @@ public class FeedbackDaoImpl implements FeedbackDao {
      */
     @Override
     public int insertFeedback(Feedback feedback) {
-        @Language("SQL") String sql = "INSERT INTO t_feedback(produce_id, customer_id, feedback_id, content, create_time, deal_status) VALUES (?,?,?,?,?,?);";
-        return Db.executeUpdate(sql, feedback.getProduceId(),feedback.getCustomerId(),feedback.getFeedbackId(),
+        @Language("SQL") String sql = "INSERT INTO t_feedback(produce_id, customer_id, content, create_time, deal_status) VALUES (?,?,?,?,?);";
+        return Db.executeUpdate(sql, feedback.getProduceId(),feedback.getCustomerId(),
                 feedback.getContent(),feedback.getCreateTime(),feedback.getDealStatus());
     }
 

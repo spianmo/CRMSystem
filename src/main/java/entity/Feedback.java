@@ -1,8 +1,13 @@
 package entity;
 
-import lombok.*;
-
 import java.sql.Date;
+
+import bean.BaseEnum;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * @ClassName Feedback
@@ -21,5 +26,42 @@ public class Feedback {
     private int feedbackId;
     private String content;
     private Date createTime;
-    private int dealStatus;
+    private Status dealStatus;
+    public enum Status implements BaseEnum {
+        /**
+         * 待解决
+         */
+        TO_BE_SOLVED(0,"待解决"),
+        /**
+         * 处理中
+         */
+        PROCESSING(1,"处理中"),
+        /**
+         * 已处理
+         */
+        PROCESSED(2,"已处理"),
+        /**
+         * 通道关闭
+         */
+        CLOSED(3,"通道关闭");
+
+        private final Integer value;
+        private final String desc;
+
+        Status(Integer value,String desc) {
+            this.value = value;
+            this.desc = desc;
+        }
+
+        @Override
+        public Integer getCode() {
+            return this.value;
+        }
+
+        @Override
+        public String getDesc() {
+            return this.desc;
+        }
+
+    }
 }

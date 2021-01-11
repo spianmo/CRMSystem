@@ -1,13 +1,14 @@
 package dao.impl;
 
+import org.intellij.lang.annotations.Language;
+
+import java.util.List;
+
 import dao.TradeDao;
 import entity.Trade;
-import org.intellij.lang.annotations.Language;
 import utils.jdbc.BeanHandler;
 import utils.jdbc.BeanListHandler;
 import utils.jdbc.Db;
-
-import java.util.List;
 
 /**
  * @ClassName TradeDaoImpl
@@ -48,8 +49,8 @@ public class TradeDaoImpl implements TradeDao {
 
     @Override
     public int insertTrade(Trade trade) {
-        @Language("SQL") String sql = "INSERT INTO t_trade (customer_id, produce_id, trade_id, amount, produce_num) VALUES(?,?,?,?,?)";
-        return Db.executeUpdate(sql, trade.getCustomerId(), trade.getProduceId(), trade.getTradeId(), trade.getAmount(), trade.getProduceNum());
+        @Language("SQL") String sql = "INSERT INTO t_trade (customer_id, produce_id, amount, produce_num) VALUES(?,?,?,?)";
+        return Db.executeUpdate(sql, trade.getCustomerId(), trade.getProduceId(), trade.getAmount(), trade.getProduceNum());
     }
 
     @Override

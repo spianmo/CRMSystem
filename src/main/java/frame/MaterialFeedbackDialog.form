@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="frame.MaterialFeedbackDialog">
+  <grid id="cbd77" binding="contentPane" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="48" y="54" width="297" height="181"/>
+    </constraints>
+    <properties>
+      <preferredSize width="340" height="180"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="e3588" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-1"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="dfb20" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <font name="Microsoft YaHei UI" size="18" style="0"/>
+              <foreground color="-13816531"/>
+              <horizontalAlignment value="0"/>
+              <text value="  产品反馈"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="94766" layout-manager="FlowLayout" hgap="0" vgap="0" flow-align="1">
+        <constraints border-constraint="South"/>
+        <properties>
+          <background color="-1"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="e7465" class="javax.swing.JButton" binding="提交反馈Button">
+            <constraints/>
+            <properties>
+              <actionCommand value=""/>
+              <background color="-1"/>
+              <borderPainted value="false"/>
+              <focusPainted value="false"/>
+              <font name="Microsoft YaHei UI" size="17" style="0"/>
+              <foreground color="-11309570"/>
+              <label value="提交反馈"/>
+              <preferredSize width="148" height="36"/>
+              <text value="提交反馈"/>
+            </properties>
+          </component>
+          <component id="6bd46" class="javax.swing.JButton" binding="取消Button" default-binding="true">
+            <constraints/>
+            <properties>
+              <actionCommand value=""/>
+              <background color="-1"/>
+              <borderPainted value="false"/>
+              <focusPainted value="false"/>
+              <font name="Microsoft YaHei UI" size="17" style="0"/>
+              <foreground color="-769226"/>
+              <label value="取  消"/>
+              <preferredSize width="148" height="36"/>
+              <text value="取  消"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="7d77" layout-manager="FlowLayout" hgap="18" vgap="0" flow-align="3">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-1"/>
+          <preferredSize width="320" height="80"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="e6e21" class="javax.swing.JTextArea" binding="feedbackTextArea">
+            <constraints/>
+            <properties>
+              <alignmentX value="0.5"/>
+              <font name="Microsoft YaHei Light" size="16" style="0"/>
+              <preferredSize width="300" height="100"/>
+              <wrapStyleWord value="false"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

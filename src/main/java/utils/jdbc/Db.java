@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import cn.hutool.core.util.EnumUtil;
+
 public class Db {
     /**
      * 增删改操作
@@ -32,8 +34,9 @@ public class Db {
             connection = jdbcUtil.getConnection();
             psmt = connection.prepareStatement(sql);
             for (int i = 0; i < params.length; i++) {
-                psmt.setObject(i + 1, params[i]);
+                psmt.setObject(i + 1, EnumUtil.isEnum(params[i]) ? params[i].toString(): params[i]);
             }
+            System.out.println(psmt.toString());
             result = psmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,6 +70,7 @@ public class Db {
             for (int i = 0; i < params.length; i++) {
                 psmt.setObject(i + 1, params[i]);
             }
+            System.out.println(psmt.toString());
             rs = psmt.executeQuery();
             return handler.handle(rs);
         } catch (Exception e) {

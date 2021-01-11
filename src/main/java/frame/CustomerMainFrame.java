@@ -27,12 +27,11 @@ import compent.MaterialOptionPane;
 import compent.MyJScrollBar;
 import compent.NoBorderJFrame;
 import entity.Customer;
-import entity.Feedback;
 import entity.Produce;
+import entity.Trade;
 import factory.ServiceFactory;
 import frame.runnable.OneTalkThread;
 import frame.runnable.TimeThread;
-import service.TradeService;
 import utils.SwingUtil;
 
 /**
@@ -252,9 +251,24 @@ public class CustomerMainFrame extends NoBorderJFrame {
             tradeBtn.setFont(new Font("Microsoft YaHei", Font.PLAIN, 16));
             tradeBtn.setPreferredSize(new Dimension(135, 30));
             tradeBtn.addActionListener(i -> {
-                ServiceFactory.getTradeServiceInstance().insertTrade();
-                //todo 订购
-                MaterialOptionPane.showMessageDialog("订购功能待开发！");
+                MaterialOptionPane.showMessageDialog("确认购买商品 " + produce.getName() + "x1吗？", new MaterialDialog.Callback() {
+                    @Override
+                    public void onConfirm() {
+                        MaterialOptionPane.showMessageDialog(ServiceFactory.getTradeServiceInstance().insertTrade(
+                                Trade.builder()
+                                        .customerId(mCustomer.getCustomerId())
+                                        .produceId(produce.getProduceId())
+                                        .amount(produce.getPrice())
+                                        .produceNum(1)
+                                        .build()
+                        )?"购买成功":"购买失败");
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        MaterialOptionPane.showMessageDialog("交易已被取消");
+                    }
+                });
             });
 
             JButton feedbackBtn = new JButton("反馈");
@@ -266,7 +280,22 @@ public class CustomerMainFrame extends NoBorderJFrame {
             feedbackBtn.setPreferredSize(new Dimension(110, 30));
             feedbackBtn.addActionListener(i -> {
                 //todo 反馈Dialog
-                MaterialOptionPane.showMessageDialog(ServiceFactory.getFeedbackServiceInstance().insertFeedback(Feedback.builder().build()) ? "反馈提交成功" : "反馈提交失败");
+                MaterialOptionPane.showFeedbackDialog(mCustomer.getCustomerId(),produce.getProduceId(),new MaterialFeedbackDialog.Callback() {
+                    @Override
+                    public void onSubmitSuccess() {
+                        MaterialOptionPane.showMessageDialog("反馈提交成功");
+                    }
+
+                    @Override
+                    public void onSubmitFailure() {
+                        MaterialOptionPane.showMessageDialog("反馈提交失败");
+                    }
+
+                    @Override
+                    public void onSubmitCanel() {
+                        System.out.println("取消反馈");
+                    }
+                });
             });
 
             JPanel btnPanel = new JPanel();

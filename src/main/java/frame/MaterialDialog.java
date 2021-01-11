@@ -20,8 +20,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import compent.DialogActionListener;
-
 public class MaterialDialog extends JDialog {
     int xOld = 0;
     int yOld = 0;
@@ -30,7 +28,7 @@ public class MaterialDialog extends JDialog {
     private JButton 取消Button;
     private JLabel messageField;
 
-    public MaterialDialog(String message, DialogActionListener actionListener) {
+    public MaterialDialog(String message, Callback callback) {
         setContentPane(contentPane);
         messageField.setText(message);
         setUndecorated(true);
@@ -60,8 +58,8 @@ public class MaterialDialog extends JDialog {
             }
         });
 
-        确定Button.addActionListener(actionListener.onProcess(MaterialDialog.this));
-        取消Button.addActionListener(e -> dispose());
+        确定Button.addActionListener(e->{dispose();callback.onConfirm();});
+        取消Button.addActionListener(e -> {dispose();callback.onCancel();});
 
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -114,6 +112,11 @@ public class MaterialDialog extends JDialog {
             }
         });
         contentPane.registerKeyboardAction(e -> dispose(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+    }
+
+    public interface Callback{
+        void onConfirm();
+        void onCancel();
     }
 
 

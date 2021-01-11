@@ -2,6 +2,7 @@ package compent;
 
 
 import frame.MaterialDialog;
+import frame.MaterialFeedbackDialog;
 
 /**
  * @ClassName MaterialOptionPane
@@ -15,8 +16,13 @@ public class MaterialOptionPane {
         frame.setVisible(true);
     }
 
-    public static void showMessageDialog(String message, DialogActionListener actionListener) {
-        MaterialDialog frame = new MaterialDialog("<html>" + message + "</html>", actionListener);
+    public static void showMessageDialog(String message,MaterialDialog.Callback callback){
+        MaterialDialog frame = new MaterialDialog("<html>" + message + "</html>", callback);
+        frame.setVisible(true);
+    }
+
+    public static void showFeedbackDialog(int customerId,int produceId,MaterialFeedbackDialog.Callback callback){
+        MaterialFeedbackDialog frame = new MaterialFeedbackDialog(customerId,produceId,callback);
         frame.setVisible(true);
     }
 
