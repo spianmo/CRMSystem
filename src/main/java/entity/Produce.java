@@ -26,4 +26,5 @@ public class Produce {
     private BigDecimal price;
     private Date produceDate;
     private String produceType;
+    private String produceImg;
 }

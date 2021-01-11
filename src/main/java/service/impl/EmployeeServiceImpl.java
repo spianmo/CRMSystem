@@ -1,5 +1,7 @@
 package service.impl;
 
+import java.util.List;
+
 import dao.EmployeeDao;
 import entity.Employee;
 import factory.DaoFactory;
@@ -14,12 +16,32 @@ import service.EmployeeService;
 public class EmployeeServiceImpl implements EmployeeService {
     EmployeeDao mEmployeeDao = DaoFactory.getEmployeeDaoInstance();
     @Override
-    public Employee selectByUserId(String employeeId) {
-        return mEmployeeDao.selectByUserId(employeeId);
+    public Employee selectByUserId(String userId) {
+        return mEmployeeDao.selectByUserId(userId);
     }
 
     @Override
-    public java.util.List<Employee> selectAllEmployee(){
+    public List<Employee> selectAllEmployee(){
         return mEmployeeDao.selectAllEmployee();
+    }
+
+    @Override
+    public List<Employee> selectEmployeeByDepartment(int departmentId) {
+        return mEmployeeDao.selectEmployeeByDepartment(departmentId);
+    }
+
+    @Override
+    public boolean insertEmployee(Employee employee) {
+        return mEmployeeDao.insertEmployee(employee) == 1;
+    }
+
+    @Override
+    public boolean updateEmployee(Employee employee) {
+        return mEmployeeDao.updateEmployee(employee) == 1;
+    }
+
+    @Override
+    public boolean deleteEmployeeById(int employeeId) {
+        return mEmployeeDao.deleteEmployeeById(employeeId) == 1;
     }
 }

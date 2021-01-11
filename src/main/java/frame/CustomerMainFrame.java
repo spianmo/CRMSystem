@@ -1,22 +1,39 @@
 package frame;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
+import javax.swing.border.TitledBorder;
 
+import compent.MaterialOptionPane;
+import compent.MyJScrollBar;
 import compent.NoBorderJFrame;
 import entity.Customer;
+import entity.Feedback;
+import entity.Produce;
+import factory.ServiceFactory;
 import frame.runnable.OneTalkThread;
 import frame.runnable.TimeThread;
+import service.TradeService;
+import utils.SwingUtil;
 
 /**
  * @ClassName CustomerMainFrame
@@ -49,20 +66,14 @@ public class CustomerMainFrame extends NoBorderJFrame {
     private JLabel mainTitle;
     private JLabel oneTalkLabel;
     private JLabel timeLabel;
+    private JScrollPane scrollPanel;
+    private JPanel contentPanel;
     private CardLayout cardLayout;
     private Customer mCustomer;
 
     public CustomerMainFrame(String title) {
         this.toFront();
-        this.mCustomer = Customer.builder()
-                .customerId(1)
-                .address("江苏省南京市栖霞区羊山北路一号")
-                .name("唐钱进")
-                .credit(90)
-                .phone("13861948872")
-                .employeeId(1)
-                .userId(1)
-                .build();
+        this.mCustomer = Customer.builder().customerId(1).address("江苏省南京市栖霞区羊山北路一号").name("唐钱进").credit(90).phone("13861948872").employeeId(1).userId(1).build();
         mainTitle.setText("   CRM SYSTEM " + title);
         oneTalkLabel.setText(title);
         OneTalkThread oneTalkThread = new OneTalkThread();
@@ -75,7 +86,8 @@ public class CustomerMainFrame extends NoBorderJFrame {
 
         initComponent();
     }
-    public CustomerMainFrame(String title,Customer customer) {
+
+    public CustomerMainFrame(String title, Customer customer) {
         this.toFront();
         this.mCustomer = customer;
         mainTitle.setText("   CRM SYSTEM " + title);
@@ -92,7 +104,7 @@ public class CustomerMainFrame extends NoBorderJFrame {
     }
 
     public static void main(String[] args) {
-        new CustomerMainFrame("");
+        new CustomerMainFrame("客户:唐钱进");
     }
 
     public void initSideTabMenu() {
@@ -136,6 +148,7 @@ public class CustomerMainFrame extends NoBorderJFrame {
             产品反馈Button.setForeground(COLOR_WHITE);
             产品反馈Button.setBackground(COLOR_CYAN);
             cardLayout.show(centerPanel, "2");
+            showProduces();
         });
         消费记录Button.addActionListener(e -> {
             基本信息Button.setIcon(new ImageIcon("img/icon1white.png"));
@@ -206,5 +219,87 @@ public class CustomerMainFrame extends NoBorderJFrame {
         exitBtn.addActionListener(actionEvent -> {
             this.dispose();
         });
+        scrollPanel.getVerticalScrollBar().setUnitIncrement(30);
+        scrollPanel.getVerticalScrollBar().setBackground(new Color(255, 255, 255));
+        scrollPanel.getVerticalScrollBar().setUI(new MyJScrollBar());
+    }
+
+    private void showProduces() {
+        contentPanel.removeAll();
+        List<Produce> produceList = ServiceFactory.getProduceServiceInstance().selectAllProduce();
+        int len = produceList.size();
+        int row = len % 3 == 0 ? len / 3 : len / 3 + 1;
+        GridLayout gridLayout = new GridLayout(row, 3, 15, 15);
+        contentPanel.setLayout(gridLayout);
+        List<JLabel> jLabels = new ArrayList<>();
+        List<String> jLabelsText = new ArrayList<>();
+        for (Produce produce : produceList) {
+            JPanel depPanel = new JPanel();
+            depPanel.setLayout(new BorderLayout());
+            depPanel.setPreferredSize(new Dimension(200, 400));
+            TitledBorder border = BorderFactory.createTitledBorder(produce.getName());
+            border.setTitleFont(new Font("Microsoft YaHei", Font.PLAIN, 16));
+            depPanel.setBorder(border);
+            JLabel logoLabel = new JLabel();
+            jLabels.add(logoLabel);
+            jLabelsText.add("<html><head><meta charset=\"UTF-8\"><title>Title</title></head><body><img src='" + produce.getProduceImg() + "' style='transform:scale(0.5);width:100%;height:auto;'/></body></html>");
+
+            JButton tradeBtn = new JButton("订购");
+            tradeBtn.setForeground(Color.WHITE);
+            tradeBtn.setFocusPainted(false);
+            tradeBtn.setBorderPainted(false);
+            tradeBtn.setBackground(new Color(83, 109, 254));
+            tradeBtn.setFont(new Font("Microsoft YaHei", Font.PLAIN, 16));
+            tradeBtn.setPreferredSize(new Dimension(135, 30));
+            tradeBtn.addActionListener(i -> {
+                ServiceFactory.getTradeServiceInstance().insertTrade();
+                //todo 订购
+                MaterialOptionPane.showMessageDialog("订购功能待开发！");
+            });
+
+            JButton feedbackBtn = new JButton("反馈");
+            feedbackBtn.setForeground(Color.WHITE);
+            feedbackBtn.setFocusPainted(false);
+            feedbackBtn.setBorderPainted(false);
+            feedbackBtn.setBackground(new Color(244, 67, 54));
+            feedbackBtn.setFont(new Font("Microsoft YaHei", Font.PLAIN, 16));
+            feedbackBtn.setPreferredSize(new Dimension(110, 30));
+            feedbackBtn.addActionListener(i -> {
+                //todo 反馈Dialog
+                MaterialOptionPane.showMessageDialog(ServiceFactory.getFeedbackServiceInstance().insertFeedback(Feedback.builder().build()) ? "反馈提交成功" : "反馈提交失败");
+            });
+
+            JPanel btnPanel = new JPanel();
+            btnPanel.setBackground(new Color(249, 249, 249));
+            FlowLayout flowLayout = new FlowLayout();
+            flowLayout.setHgap(0);
+            flowLayout.setVgap(0);
+            btnPanel.setLayout(flowLayout);
+            btnPanel.add(tradeBtn);
+            btnPanel.add(feedbackBtn);
+            depPanel.add(btnPanel, BorderLayout.SOUTH);
+            depPanel.add(logoLabel, BorderLayout.CENTER);
+            depPanel.setBackground(new Color(249, 249, 249));
+            contentPanel.add(depPanel);
+            contentPanel.revalidate();
+        }
+        int count = 0;
+        boolean isWeakNet = false;
+        for (JLabel j : jLabels) {
+            try {
+                j.setText(jLabelsText.get(count));
+            } catch (Exception e) {
+                isWeakNet = true;
+                ImageIcon icon = new ImageIcon("img/picgone.png");
+                j.setPreferredSize(new Dimension(150, 150));
+                j.setIcon(SwingUtil.createAutoAdjustIcon(icon.getImage(), false));
+                j.setText("");
+            }
+            count++;
+        }
+        if (isWeakNet) {
+            System.err.println("当前网络环境：弱网 图片加载失败");
+            MaterialOptionPane.showMessageDialog("当前网络环境：弱网 图片加载失败");
+        }
     }
 }

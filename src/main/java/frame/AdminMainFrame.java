@@ -68,11 +68,12 @@ public class AdminMainFrame extends NoBorderJFrame {
     private JLabel mainTitle;
     private JLabel oneTalkLabel;
     private JLabel timeLabel;
-    private JPanel tablePanel;
     private CardLayout cardLayout;
     private JTextField searchCustomerField;
     private JButton 搜索CustomerButton;
-    private JPanel tableCustomerTable;
+    private JPanel customerTablePanel;
+    private JPanel employeeTablePanel;
+    private JButton 搜索EmployeeButton;
     private JTextField searchEmployeeField;
 
     public AdminMainFrame(String title) {
@@ -106,6 +107,7 @@ public class AdminMainFrame extends NoBorderJFrame {
         客户管理Button.setIcon(new ImageIcon("img/icon2white.png"));
         订单管理Button.setIcon(new ImageIcon("img/icon3white.png"));
         查询业绩Button.setIcon(new ImageIcon("img/icon4white.png"));
+        showEmployees(ServiceFactory.getEmployeeServiceInstance().selectAllEmployee());
         员工管理Button.addActionListener(e -> {
             员工管理Button.setIcon(new ImageIcon("img/icon1blue.png"));
             客户管理Button.setIcon(new ImageIcon("img/icon2white.png"));
@@ -171,7 +173,7 @@ public class AdminMainFrame extends NoBorderJFrame {
     }
 
     private void showEmployees(List<Employee> employeeList) {
-        tablePanel.removeAll();
+        employeeTablePanel.removeAll();
         JTable table = new JTable();
         DefaultTableModel model = new DefaultTableModel();
         table.setModel(model);
@@ -214,8 +216,8 @@ public class AdminMainFrame extends NoBorderJFrame {
         JScrollPane scrollPane = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.getVerticalScrollBar().setUI(new MyJScrollBar(new Color(200, 200, 200)));
         scrollPane.getHorizontalScrollBar().setUI(new MyJScrollBar(new Color(200, 200, 200)));
-        tablePanel.add(scrollPane);
-        tablePanel.revalidate();
+        employeeTablePanel.add(scrollPane);
+        employeeTablePanel.revalidate();
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -242,7 +244,7 @@ public class AdminMainFrame extends NoBorderJFrame {
     }
 
     private void showCustomers(List<Customer> customerList) {
-        tablePanel.removeAll();
+        customerTablePanel.removeAll();
         JTable table = new JTable();
         DefaultTableModel model = new DefaultTableModel();
         table.setModel(model);
@@ -285,8 +287,8 @@ public class AdminMainFrame extends NoBorderJFrame {
         JScrollPane scrollPane = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.getVerticalScrollBar().setUI(new MyJScrollBar(new Color(200, 200, 200)));
         scrollPane.getHorizontalScrollBar().setUI(new MyJScrollBar(new Color(200, 200, 200)));
-        tablePanel.add(scrollPane);
-        tablePanel.revalidate();
+        customerTablePanel.add(scrollPane);
+        customerTablePanel.revalidate();
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -353,7 +355,7 @@ public class AdminMainFrame extends NoBorderJFrame {
     }
 
     public void initPanelContentCompent(){
-        searchCustomerField.addFocusListener(new JTextFieldHintListener(searchEmployeeField, " 搜索关键字...", Font.PLAIN));
+        searchCustomerField.addFocusListener(new JTextFieldHintListener(searchCustomerField, " 搜索关键字...", Font.PLAIN));
         searchCustomerField.setBorder(new RoundBorder(Color.LIGHT_GRAY));
         searchEmployeeField.addFocusListener(new JTextFieldHintListener(searchEmployeeField, " 搜索关键字...", Font.PLAIN));
         searchEmployeeField.setBorder(new RoundBorder(Color.LIGHT_GRAY));

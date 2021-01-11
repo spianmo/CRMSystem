@@ -10,7 +10,6 @@ package utils.jdbc;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class Db {
     /**
@@ -36,7 +35,7 @@ public class Db {
                 psmt.setObject(i + 1, params[i]);
             }
             result = psmt.executeUpdate();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             jdbcUtil.close(psmt, null);

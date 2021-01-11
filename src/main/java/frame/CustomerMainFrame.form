@@ -147,7 +147,26 @@
                   <background color="-1"/>
                 </properties>
                 <border type="none"/>
-                <children/>
+                <children>
+                  <scrollpane id="170b7" binding="scrollPanel">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <background color="-394759"/>
+                      <horizontalScrollBarPolicy value="31"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="9c3e4" binding="contentPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints/>
+                        <properties>
+                          <background color="-394759"/>
+                        </properties>
+                        <border type="none"/>
+                        <children/>
+                      </grid>
+                    </children>
+                  </scrollpane>
+                </children>
               </grid>
               <grid id="bde0d" binding="taskManagePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                 <constraints>

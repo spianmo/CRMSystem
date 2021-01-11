@@ -173,7 +173,7 @@
                       </grid>
                     </children>
                   </grid>
-                  <grid id="97bc4" binding="tableCustomerTable" layout-manager="BorderLayout" hgap="0" vgap="0">
+                  <grid id="97bc4" binding="customerTablePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints border-constraint="Center"/>
                     <properties/>
                     <border type="none"/>
@@ -208,7 +208,50 @@
                 </constraints>
                 <properties/>
                 <border type="none"/>
-                <children/>
+                <children>
+                  <grid id="1ca0c" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="North"/>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <grid id="e8908" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
+                        <constraints border-constraint="Center"/>
+                        <properties>
+                          <autoscrolls value="false"/>
+                          <background color="-1"/>
+                          <foreground color="-1"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="a0757" class="javax.swing.JTextField" binding="searchEmployeeField">
+                            <constraints/>
+                            <properties>
+                              <preferredSize width="180" height="36"/>
+                            </properties>
+                          </component>
+                          <component id="a29df" class="javax.swing.JButton" binding="搜索EmployeeButton">
+                            <constraints/>
+                            <properties>
+                              <background color="-11309570"/>
+                              <borderPainted value="false"/>
+                              <focusPainted value="false"/>
+                              <font name="Microsoft YaHei" size="16" style="0"/>
+                              <foreground color="-1"/>
+                              <preferredSize width="100" height="36"/>
+                              <text value="搜索"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="9d467" binding="employeeTablePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="Center"/>
+                    <properties/>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                </children>
               </grid>
             </children>
           </grid>
