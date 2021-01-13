@@ -36,7 +36,7 @@ public class Db {
             for (int i = 0; i < params.length; i++) {
                 psmt.setObject(i + 1, EnumUtil.isEnum(params[i]) ? params[i].toString(): params[i]);
             }
-            System.out.println(psmt.toString());
+            System.out.println(psmt.toString().replace("com.mysql.cj.jdbc.ClientPreparedStatement:", "===============>"));
             result = psmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -70,7 +70,7 @@ public class Db {
             for (int i = 0; i < params.length; i++) {
                 psmt.setObject(i + 1, params[i]);
             }
-            System.out.println(psmt.toString());
+            System.out.println(psmt.toString().replace("com.mysql.cj.jdbc.ClientPreparedStatement:", "===============>"));
             rs = psmt.executeQuery();
             return handler.handle(rs);
         } catch (Exception e) {

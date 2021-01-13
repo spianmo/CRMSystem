@@ -496,6 +496,7 @@ public class EmployeeMainFrame extends NoBorderJFrame {
         });
         exitBtn.addActionListener(actionEvent -> {
             this.dispose();
+            System.exit(0);
         });
 
         initPanelContentCompent();

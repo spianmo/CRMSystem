@@ -232,6 +232,7 @@ public class CustomerMainFrame extends NoBorderJFrame {
         });
         exitBtn.addActionListener(actionEvent -> {
             this.dispose();
+            System.exit(0);
         });
         scrollPanel.getVerticalScrollBar().setUnitIncrement(30);
         scrollPanel.getVerticalScrollBar().setBackground(new Color(255, 255, 255));
