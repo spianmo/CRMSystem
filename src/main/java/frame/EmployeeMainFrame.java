@@ -14,7 +14,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -27,15 +29,20 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import compent.JTextFieldHintListener;
+import compent.MaterialOptionPane;
 import compent.MyJScrollBar;
 import compent.NoBorderJFrame;
 import compent.RoundBorder;
 import entity.Customer;
 import entity.Employee;
+import entity.Feedback;
+import entity.Task;
+import entity.vo.FeedbackVo;
 import factory.ServiceFactory;
 import frame.runnable.OneTalkThread;
 import frame.runnable.TimeThread;
 import mdlaf.components.label.MaterialLabelUI;
+import mdlaf.components.popupmenu.MaterialPopupMenuUI;
 import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
@@ -73,6 +80,9 @@ public class EmployeeMainFrame extends NoBorderJFrame {
     private CardLayout cardLayout;
     private JTextField searchCustomerField;
     private JButton 搜索CustomerButton;
+    private JButton 新增计划Button;
+    private JPanel taskTablePanel;
+    private JPanel feedbackTablePanel;
     private Employee mEmployee;
 
     public EmployeeMainFrame(String title, Employee employee) {
@@ -175,6 +185,7 @@ public class EmployeeMainFrame extends NoBorderJFrame {
             反馈处理Button.setForeground(COLOR_WHITE);
             反馈处理Button.setBackground(COLOR_CYAN);
             cardLayout.show(centerPanel, "3");
+            showTasks(ServiceFactory.getTaskServiceInstance().selectTaskByEmployeeId(this.mEmployee.getEmployeeId()));
         });
         反馈处理Button.addActionListener(e -> {
             员工信息Button.setIcon(new ImageIcon("img/icon1white.png"));
@@ -190,6 +201,7 @@ public class EmployeeMainFrame extends NoBorderJFrame {
             反馈处理Button.setForeground(COLOR_CYAN);
             反馈处理Button.setBackground(COLOR_WHITE);
             cardLayout.show(centerPanel, "4");
+            showFeedbacks(ServiceFactory.getFeedbackServiceInstance().selectFeedbackByEmployeeId(this.mEmployee.getEmployeeId()));
         });
     }
 
@@ -261,6 +273,187 @@ public class EmployeeMainFrame extends NoBorderJFrame {
             try {
                 Customer customer = customerList.get(row);
                 System.out.println(customer);
+                //todo
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+    }
+
+    private void showTasks(List<Task> taskList) {
+        //获得学生列表
+        //创建表格对象
+        taskTablePanel.removeAll();
+        JTable table = new JTable();
+        //创建表格数据模型，并设置给表格
+        DefaultTableModel model = new DefaultTableModel();
+        table.setModel(model);
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        model.setColumnIdentifiers(new String[]{"计划编号", "计划详情", "目标客户人数", "计划状态", "计划时间"});
+        //遍历list，生成Object数组，数组中的每一个元素就是一行记录
+        for (Task task : taskList) {
+            Object[] object = new Object[]{task.getTaskId(), task.getTaskDesc(), task.getCustomerNum() ,task.getTaskStatus(),task.getTaskTime()};
+            model.addRow(object);
+        }
+        table.getColumnModel().getColumn(0).setPreferredWidth(120);
+        table.getColumnModel().getColumn(1).setPreferredWidth(120);
+        table.getColumnModel().getColumn(2).setPreferredWidth(300);
+        table.getColumnModel().getColumn(3).setPreferredWidth(120);
+        table.getColumnModel().getColumn(4).setPreferredWidth(200);
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+
+            }
+        });
+        //获得表格的表头
+        JTableHeader header = table.getTableHeader();
+        //表头居中
+        DefaultTableCellHeaderRenderer hr = new DefaultTableCellHeaderRenderer();
+        hr.setHorizontalAlignment(JLabel.CENTER);
+        header.setDefaultRenderer(hr);
+        //设置表头字体
+        header.setPreferredSize(new Dimension(header.getWidth(), 40));
+        header.setFont(new Font("微软雅黑", Font.PLAIN, 19));
+        //设置表格行高
+        table.setRowHeight(40);
+        //表格内容居中
+        DefaultTableCellRenderer defaultTableCellRenderer = new DefaultTableCellRenderer();
+        defaultTableCellRenderer.setHorizontalAlignment(JLabel.CENTER);
+        defaultTableCellRenderer.setBackground(Color.WHITE);
+        defaultTableCellRenderer.setUI(new MaterialLabelUI());
+        defaultTableCellRenderer.setFont(new Font("微软雅黑", Font.PLAIN, 19));
+        table.setDefaultRenderer(Object.class, defaultTableCellRenderer);
+        //表格加入滚动面板，并设置水平和垂直方向可按需滚动
+        JScrollPane scrollPane = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.getVerticalScrollBar().setUI(new MyJScrollBar(new Color(200, 200, 200)));
+        scrollPane.getHorizontalScrollBar().setUI(new MyJScrollBar(new Color(200, 200, 200)));
+        taskTablePanel.add(scrollPane);
+        taskTablePanel.revalidate();
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    //表格 的rowAtPoint方法返回坐标所在的行号，参数为坐标类型，
+                    int i = table.rowAtPoint(e.getPoint());
+                    Task task = taskList.get(i);
+
+                }
+            }
+        });
+
+        //表格内容监听，根据点击的行得到不同的数据
+        table.getSelectionModel().addListSelectionListener(e -> {
+            int row = table.getSelectedRow();
+            try {
+                Task task = taskList.get(row);
+                System.out.println(task);
+                //todo
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+    }
+
+    private void showFeedbacks(List<FeedbackVo> feedbackList) {
+        //获得学生列表
+        //创建表格对象
+        feedbackTablePanel.removeAll();
+        JTable table = new JTable();
+        //创建表格数据模型，并设置给表格
+        DefaultTableModel model = new DefaultTableModel();
+        table.setModel(model);
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        model.setColumnIdentifiers(new String[]{"工单ID", "工单内容", "关联产品", "发起客户", "处理状态", "创建时间"});
+        //遍历list，生成Object数组，数组中的每一个元素就是一行记录
+        for (FeedbackVo feedback : feedbackList) {
+            Object[] object = new Object[]{feedback.getFeedbackId(), feedback.getContent(), feedback.getProduceName() ,feedback.getCustomerName(),feedback.getDealStatus().getDesc(),feedback.getCreateTime()};
+            model.addRow(object);
+        }
+        table.getColumnModel().getColumn(0).setPreferredWidth(80);
+        table.getColumnModel().getColumn(1).setPreferredWidth(260);
+        table.getColumnModel().getColumn(2).setPreferredWidth(140);
+        table.getColumnModel().getColumn(3).setPreferredWidth(120);
+        table.getColumnModel().getColumn(4).setPreferredWidth(140);
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+
+            }
+        });
+        //获得表格的表头
+        JTableHeader header = table.getTableHeader();
+        //表头居中
+        DefaultTableCellHeaderRenderer hr = new DefaultTableCellHeaderRenderer();
+        hr.setHorizontalAlignment(JLabel.CENTER);
+        header.setDefaultRenderer(hr);
+        //设置表头字体
+        header.setPreferredSize(new Dimension(header.getWidth(), 40));
+        header.setFont(new Font("微软雅黑", Font.PLAIN, 19));
+        //设置表格行高
+        table.setRowHeight(40);
+        //表格内容居中
+        DefaultTableCellRenderer defaultTableCellRenderer = new DefaultTableCellRenderer();
+        defaultTableCellRenderer.setHorizontalAlignment(JLabel.CENTER);
+        defaultTableCellRenderer.setBackground(Color.WHITE);
+        defaultTableCellRenderer.setUI(new MaterialLabelUI());
+        defaultTableCellRenderer.setFont(new Font("微软雅黑", Font.PLAIN, 19));
+        table.setDefaultRenderer(Object.class, defaultTableCellRenderer);
+        //表格加入滚动面板，并设置水平和垂直方向可按需滚动
+        JScrollPane scrollPane = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.getVerticalScrollBar().setUI(new MyJScrollBar(new Color(200, 200, 200)));
+        scrollPane.getHorizontalScrollBar().setUI(new MyJScrollBar(new Color(200, 200, 200)));
+        feedbackTablePanel.add(scrollPane);
+        feedbackTablePanel.revalidate();
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    //表格 的rowAtPoint方法返回坐标所在的行号，参数为坐标类型，
+                    int i = table.rowAtPoint(e.getPoint());
+                    FeedbackVo feedback = feedbackList.get(i);
+                    Feedback feedback1 = ServiceFactory.getFeedbackServiceInstance().selectFeedbackById(feedback.getFeedbackId());
+                    JPopupMenu jPopupMenu = new JPopupMenu();
+                    jPopupMenu.setUI(new MaterialPopupMenuUI());
+                    jPopupMenu.setBorder(new RoundBorder(Color.LIGHT_GRAY));
+                    JMenuItem item1 = new JMenuItem("处理中");
+                    item1.setFont(new Font("微软雅黑", Font.PLAIN, 19));
+                    item1.addActionListener(e1 -> {
+                        feedback1.setDealStatus(Feedback.Status.PROCESSING);
+                        MaterialOptionPane.showMessageDialog(ServiceFactory.getFeedbackServiceInstance().updateFeedback(feedback1)?"修改状态成功":"修改状态失败");
+                        showFeedbacks(ServiceFactory.getFeedbackServiceInstance().selectFeedbackByEmployeeId(mEmployee.getEmployeeId()));
+
+                    });
+                    JMenuItem item2 = new JMenuItem("已处理");
+                    item2.setFont(new Font("微软雅黑", Font.PLAIN, 19));
+                    item2.addActionListener(e2 -> {
+                        feedback1.setDealStatus(Feedback.Status.PROCESSED);
+                        MaterialOptionPane.showMessageDialog(ServiceFactory.getFeedbackServiceInstance().updateFeedback(feedback1)?"修改状态成功":"修改状态失败");
+                        showFeedbacks(ServiceFactory.getFeedbackServiceInstance().selectFeedbackByEmployeeId(mEmployee.getEmployeeId()));
+
+                    });
+                    JMenuItem item3 = new JMenuItem("通道关闭");
+                    item3.setFont(new Font("微软雅黑", Font.PLAIN, 19));
+                    item3.addActionListener(e3 -> {
+                        feedback1.setDealStatus(Feedback.Status.CLOSED);
+                        MaterialOptionPane.showMessageDialog(ServiceFactory.getFeedbackServiceInstance().updateFeedback(feedback1)?"修改状态成功":"修改状态失败");
+                        showFeedbacks(ServiceFactory.getFeedbackServiceInstance().selectFeedbackByEmployeeId(mEmployee.getEmployeeId()));
+
+                    });
+                    jPopupMenu.add(item1);
+                    jPopupMenu.add(item2);
+                    jPopupMenu.add(item3);
+                    jPopupMenu.show(table, e.getX(), e.getY());
+                }
+            }
+        });
+
+        //表格内容监听，根据点击的行得到不同的数据
+        table.getSelectionModel().addListSelectionListener(e -> {
+            int row = table.getSelectedRow();
+            try {
+                FeedbackVo feedback = feedbackList.get(row);
+                System.out.println(feedback);
                 //todo
             } catch (Exception e1) {
                 e1.printStackTrace();

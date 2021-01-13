@@ -1,13 +1,14 @@
 package dao.impl;
 
+import org.intellij.lang.annotations.Language;
+
+import java.util.List;
+
 import dao.TaskDao;
 import entity.Task;
-import org.intellij.lang.annotations.Language;
 import utils.jdbc.BeanHandler;
 import utils.jdbc.BeanListHandler;
 import utils.jdbc.Db;
-
-import java.util.List;
 
 /**
  * @ClassName TaskDaoImpl
@@ -36,8 +37,8 @@ public class TaskDaoImpl implements TaskDao {
 
     @Override
     public int insertTask(Task task) {
-        @Language("SQL") String sql = "INSERT INTO t_task (task_time, customer_num, employee_id) VALUES (?,?,?)";
-        return Db.executeUpdate(sql,task.getTaskTime(),task.getCustomerNum(),task.getEmployeeId());
+        @Language("SQL") String sql = "INSERT INTO t_task (task_time,task_desc, customer_num, employee_id) VALUES (?,?,?,?)";
+        return Db.executeUpdate(sql, task.getTaskTime(), task.getTaskDesc(), task.getCustomerNum(), task.getEmployeeId());
     }
 
     @Override
@@ -49,6 +50,6 @@ public class TaskDaoImpl implements TaskDao {
     @Override
     public int updateTask(Task task) {
         @Language("SQL") String sql = "UPDATE t_task SET task_time = ?, customer_num = ?, employee_id = ? WHERE task_id = ?";
-        return Db.executeUpdate(sql,task.getTaskTime(),task.getCustomerNum(),task.getEmployeeId());
+        return Db.executeUpdate(sql, task.getTaskTime(), task.getCustomerNum(), task.getEmployeeId());
     }
 }

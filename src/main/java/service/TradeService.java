@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import entity.Trade;
+import entity.vo.TradeVo;
 
 /**
  * @author Finger
@@ -19,7 +20,7 @@ public interface TradeService {
      * @param customerId 客户ID
      * @return 返回某一客户的所有订单
      */
-    List<Trade> selectTradeByCustomerId(int customerId);
+    List<TradeVo> selectTradeByCustomerId(int customerId);
     /**
      * 根据员工ID查询订单
      * @param employeeId 员工ID

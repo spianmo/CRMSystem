@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.FeedbackDao;
 import entity.Feedback;
+import entity.vo.FeedbackVo;
 import factory.DaoFactory;
 import service.FeedbackService;
 
@@ -23,8 +24,13 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
     @Override
-    public List<Feedback> selectFeedbackByCustomerId(int customerId) {
+    public List<FeedbackVo> selectFeedbackByCustomerId(int customerId) {
         return mFeedbackDao.selectFeedbackByCustomerId(customerId);
+    }
+
+    @Override
+    public List<FeedbackVo> selectFeedbackByEmployeeId(int customerId) {
+        return mFeedbackDao.selectFeedbackByEmployeeId(customerId);
     }
 
     @Override
@@ -35,6 +41,11 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     public boolean updateFeedback(Feedback feedback) {
         return mFeedbackDao.updateFeedback(feedback) == 1;
+    }
+
+    @Override
+    public Feedback selectFeedbackById(int feedbackId) {
+        return mFeedbackDao.selectFeedbackById(feedbackId);
     }
 
     @Override

@@ -1,8 +1,9 @@
 package dao;
 
-import entity.Trade;
-
 import java.util.List;
+
+import entity.Trade;
+import entity.vo.TradeVo;
 
 /**
  * 订单实体操作的Dao数据访问层
@@ -20,7 +21,7 @@ public interface TradeDao {
      * @param customerId 客户ID
      * @return 返回某一客户的所有订单
      */
-    List<Trade> selectTradeByCustomerId(int customerId);
+    List<TradeVo> selectTradeByCustomerId(int customerId);
     /**
      * 根据员工ID查询订单
      * @param employeeId 员工ID

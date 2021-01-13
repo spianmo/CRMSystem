@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.TradeDao;
 import entity.Trade;
+import entity.vo.TradeVo;
 import factory.DaoFactory;
 import service.TradeService;
 
@@ -21,7 +22,7 @@ public class TradeServiceImpl implements TradeService {
     }
 
     @Override
-    public List<Trade> selectTradeByCustomerId(int customerId) {
+    public List<TradeVo> selectTradeByCustomerId(int customerId) {
         return mTradeDao.selectTradeByCustomerId(customerId);
     }
 

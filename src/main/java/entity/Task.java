@@ -24,6 +24,7 @@ public class Task {
     private int taskId;
     private int employeeId;
     private Date taskTime;
+    private String taskDesc;
     private String customerNum;
     private TaskStatus taskStatus;
 

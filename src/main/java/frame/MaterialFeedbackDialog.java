@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
+import compent.MaterialOptionPane;
 import entity.Feedback;
 import factory.ServiceFactory;
 
@@ -64,6 +65,10 @@ public class MaterialFeedbackDialog extends JDialog {
 
         提交反馈Button.addActionListener(e -> {
             dispose();
+            if (feedbackTextArea.getText().isEmpty()){
+                MaterialOptionPane.showMessageDialog("反馈内容不能为空！");
+                return;
+            }
             Feedback feedback = Feedback.builder()
                     .customerId(customerId)
                     .produceId(produceId)

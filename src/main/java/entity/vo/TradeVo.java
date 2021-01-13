@@ -1,4 +1,4 @@
-package entity;
+package entity.vo;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -10,20 +10,20 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * @ClassName Trade
+ * @ClassName TradeVo
  * @Description TODO
  * @Author Finger
- * @Date 12/31/2020
+ * @Date 1/13/2021
  **/
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Trade {
-    private int customerId;
-    private int produceId;
+public class TradeVo {
     private int tradeId;
+    private String produceName;
+    private int customerId;
     private BigDecimal amount;
     private int produceNum;
     private Date tradeTime;

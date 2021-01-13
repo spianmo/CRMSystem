@@ -6,6 +6,7 @@ import java.util.List;
 
 import dao.TradeDao;
 import entity.Trade;
+import entity.vo.TradeVo;
 import utils.jdbc.BeanHandler;
 import utils.jdbc.BeanListHandler;
 import utils.jdbc.Db;
@@ -24,9 +25,9 @@ public class TradeDaoImpl implements TradeDao {
     }
 
     @Override
-    public List<Trade> selectTradeByCustomerId(int customerId) {
-        @Language("SQL") String sql = "SELECT * FROM t_trade WHERE t_trade.customer_id";
-        return Db.executeQuery(sql, new BeanListHandler<>(Trade.class), customerId);
+    public List<TradeVo> selectTradeByCustomerId(int customerId) {
+        @Language("SQL") String sql = "SELECT t1.trade_id,t2.name AS produce_name,t1.customer_id,t1.amount,t1.produce_num,t1.trade_time FROM t_trade t1 LEFT JOIN t_produce t2 ON t1.produce_id = t2.produce_id WHERE t1.customer_id = ?";
+        return Db.executeQuery(sql, new BeanListHandler<>(TradeVo.class), customerId);
     }
 
     @Override
@@ -49,8 +50,8 @@ public class TradeDaoImpl implements TradeDao {
 
     @Override
     public int insertTrade(Trade trade) {
-        @Language("SQL") String sql = "INSERT INTO t_trade (customer_id, produce_id, amount, produce_num) VALUES(?,?,?,?)";
-        return Db.executeUpdate(sql, trade.getCustomerId(), trade.getProduceId(), trade.getAmount(), trade.getProduceNum());
+        @Language("SQL") String sql = "INSERT INTO t_trade (customer_id, produce_id, amount, produce_num,trade_time) VALUES(?,?,?,?,?)";
+        return Db.executeUpdate(sql, trade.getCustomerId(), trade.getProduceId(), trade.getAmount(), trade.getProduceNum(),trade.getTradeTime());
     }
 
     @Override

@@ -1,8 +1,9 @@
 package dao;
 
-import entity.Feedback;
-
 import java.util.List;
+
+import entity.Feedback;
+import entity.vo.FeedbackVo;
 
 /**
  * 反馈实体操作的Dao数据访问层
@@ -22,7 +23,16 @@ public interface FeedbackDao {
      * @param customerId 顾客ID
      * @return 根据顾客ID查出的订单
      */
-    List<Feedback> selectFeedbackByCustomerId(int customerId);
+    List<FeedbackVo> selectFeedbackByCustomerId(int customerId);
+
+    /**
+     * 根据员工ID查询订单
+     * @param employeeId 顾客ID
+     * @return 根据顾客ID查出的订单
+     */
+    List<FeedbackVo> selectFeedbackByEmployeeId(int employeeId);
+
+    Feedback selectFeedbackById(int feedbackId);
 
     /**
      * 插入一条新的反馈记录

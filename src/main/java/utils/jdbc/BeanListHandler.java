@@ -42,8 +42,7 @@ public class BeanListHandler<T> implements IResultSetHandler<List<T>> {
                     if (!clazz.isEnum()) {
                         pd.getWriteMethod().invoke(obj, o);
                     } else {
-                        Method method = ReflectUtil.getMethodByName(clazz, "getEnum");
-                        System.out.println(method);
+                        Method method = ReflectUtil.getMethodByName(clazz, "valueOf");
                         Object enumObj = method.invoke(null, o);
                         pd.getWriteMethod().invoke(obj, enumObj);
                     }

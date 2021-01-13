@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import entity.Feedback;
+import entity.vo.FeedbackVo;
 
 public interface FeedbackService {
     /**
@@ -17,8 +18,14 @@ public interface FeedbackService {
      * @param customerId 顾客ID
      * @return 根据顾客ID查出的订单
      */
-    List<Feedback> selectFeedbackByCustomerId(int customerId);
+    List<FeedbackVo> selectFeedbackByCustomerId(int customerId);
 
+    /**
+     * 根据员工ID查询订单
+     * @param customerId 顾客ID
+     * @return 根据顾客ID查出的订单
+     */
+    List<FeedbackVo> selectFeedbackByEmployeeId(int customerId);
     /**
      * 插入一条新的反馈记录
      * @param feedback 需要新增的反馈对象
@@ -32,6 +39,8 @@ public interface FeedbackService {
      * @return 返回影响行数
      */
     boolean updateFeedback(Feedback feedback);
+
+    Feedback selectFeedbackById(int feedbackId);
 
     /**
      * 根据反馈ID删除反馈
