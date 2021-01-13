@@ -9,7 +9,6 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import bean.onLoginCallback;
-import compent.MaterialOptionPane;
 import compent.NoBorderJFrame;
 import compent.RoundBorder;
 import entity.User;
@@ -51,10 +50,10 @@ public class LoginFrame extends NoBorderJFrame {
                             new AdminMainFrame("管理员:" + user.getUsername());
                             break;
                         case EMPLOYEE:
-                            new EmployeeMainFrame("员工:" + user.getUsername(),ServiceFactory.getEmployeeServiceInstance().selectByUserId(String.valueOf(user.getId())));
+                            new EmployeeMainFrame("员工:" + user.getUsername(), ServiceFactory.getEmployeeServiceInstance().selectByUserId(user.getId()));
                             break;
                         case CUSTOMER:
-                            new CustomerMainFrame("客户:" + user.getUsername(),ServiceFactory.getCustomerServiceInstance().selectByUserId(String.valueOf(user.getId())));
+                            new CustomerMainFrame("客户:" + user.getUsername(), ServiceFactory.getCustomerServiceInstance().selectByUserId(user.getId()));
                             break;
                         default:
                             MaterialOptionPane.showMessageDialog("账号身份异常！");

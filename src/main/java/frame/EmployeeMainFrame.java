@@ -4,10 +4,14 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.io.File;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -28,8 +32,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import cn.hutool.core.io.FileUtil;
 import compent.JTextFieldHintListener;
-import compent.MaterialOptionPane;
 import compent.MyJScrollBar;
 import compent.NoBorderJFrame;
 import compent.RoundBorder;
@@ -79,10 +83,11 @@ public class EmployeeMainFrame extends NoBorderJFrame {
     private JPanel tablePanel;
     private CardLayout cardLayout;
     private JTextField searchCustomerField;
-    private JButton 搜索CustomerButton;
+    private JButton 搜索客户Button;
     private JButton 新增计划Button;
     private JPanel taskTablePanel;
     private JPanel feedbackTablePanel;
+    private JButton 导出客户数据Button;
     private Employee mEmployee;
 
     public EmployeeMainFrame(String title, Employee employee) {
@@ -103,13 +108,7 @@ public class EmployeeMainFrame extends NoBorderJFrame {
 
     public EmployeeMainFrame(String title) {
         this.toFront();
-        this.mEmployee = Employee.builder()
-                .employeeId(1)
-                .departmentId(1)
-                .name("kirito")
-                .produceType("主机类")
-                .salary(new BigDecimal("24000"))
-                .userId(1).build();
+        this.mEmployee = Employee.builder().employeeId(1).departmentId(1).name("kirito").produceType("主机类").salary(new BigDecimal("24000")).userId(1).build();
         mainTitle.setText("   CRM SYSTEM " + title);
         oneTalkLabel.setText(title);
         OneTalkThread oneTalkThread = new OneTalkThread();
@@ -217,7 +216,7 @@ public class EmployeeMainFrame extends NoBorderJFrame {
         model.setColumnIdentifiers(new String[]{"客户编号", "姓名", "住址", "信用值", "手机号"});
         //遍历list，生成Object数组，数组中的每一个元素就是一行记录
         for (Customer customer : customerList) {
-            Object[] object = new Object[]{customer.getCustomerId(), customer.getName(), customer.getAddress(),customer.getCredit(),customer.getPhone()};
+            Object[] object = new Object[]{customer.getCustomerId(), customer.getName(), customer.getAddress(), customer.getCredit(), customer.getPhone()};
             model.addRow(object);
         }
         table.getColumnModel().getColumn(0).setPreferredWidth(120);
@@ -292,12 +291,12 @@ public class EmployeeMainFrame extends NoBorderJFrame {
         model.setColumnIdentifiers(new String[]{"计划编号", "计划详情", "目标客户人数", "计划状态", "计划时间"});
         //遍历list，生成Object数组，数组中的每一个元素就是一行记录
         for (Task task : taskList) {
-            Object[] object = new Object[]{task.getTaskId(), task.getTaskDesc(), task.getCustomerNum() ,task.getTaskStatus(),task.getTaskTime()};
+            Object[] object = new Object[]{task.getTaskId(), task.getTaskDesc(), task.getCustomerNum(), task.getTaskStatus().getDesc(), task.getTaskTime()};
             model.addRow(object);
         }
         table.getColumnModel().getColumn(0).setPreferredWidth(120);
-        table.getColumnModel().getColumn(1).setPreferredWidth(120);
-        table.getColumnModel().getColumn(2).setPreferredWidth(300);
+        table.getColumnModel().getColumn(1).setPreferredWidth(300);
+        table.getColumnModel().getColumn(2).setPreferredWidth(100);
         table.getColumnModel().getColumn(3).setPreferredWidth(120);
         table.getColumnModel().getColumn(4).setPreferredWidth(200);
         table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -367,7 +366,7 @@ public class EmployeeMainFrame extends NoBorderJFrame {
         model.setColumnIdentifiers(new String[]{"工单ID", "工单内容", "关联产品", "发起客户", "处理状态", "创建时间"});
         //遍历list，生成Object数组，数组中的每一个元素就是一行记录
         for (FeedbackVo feedback : feedbackList) {
-            Object[] object = new Object[]{feedback.getFeedbackId(), feedback.getContent(), feedback.getProduceName() ,feedback.getCustomerName(),feedback.getDealStatus().getDesc(),feedback.getCreateTime()};
+            Object[] object = new Object[]{feedback.getFeedbackId(), feedback.getContent(), feedback.getProduceName(), feedback.getCustomerName(), feedback.getDealStatus().getDesc(), feedback.getCreateTime()};
             model.addRow(object);
         }
         table.getColumnModel().getColumn(0).setPreferredWidth(80);
@@ -420,7 +419,7 @@ public class EmployeeMainFrame extends NoBorderJFrame {
                     item1.setFont(new Font("微软雅黑", Font.PLAIN, 19));
                     item1.addActionListener(e1 -> {
                         feedback1.setDealStatus(Feedback.Status.PROCESSING);
-                        MaterialOptionPane.showMessageDialog(ServiceFactory.getFeedbackServiceInstance().updateFeedback(feedback1)?"修改状态成功":"修改状态失败");
+                        MaterialOptionPane.showMessageDialog(ServiceFactory.getFeedbackServiceInstance().updateFeedback(feedback1) ? "修改状态成功" : "修改状态失败");
                         showFeedbacks(ServiceFactory.getFeedbackServiceInstance().selectFeedbackByEmployeeId(mEmployee.getEmployeeId()));
 
                     });
@@ -428,7 +427,7 @@ public class EmployeeMainFrame extends NoBorderJFrame {
                     item2.setFont(new Font("微软雅黑", Font.PLAIN, 19));
                     item2.addActionListener(e2 -> {
                         feedback1.setDealStatus(Feedback.Status.PROCESSED);
-                        MaterialOptionPane.showMessageDialog(ServiceFactory.getFeedbackServiceInstance().updateFeedback(feedback1)?"修改状态成功":"修改状态失败");
+                        MaterialOptionPane.showMessageDialog(ServiceFactory.getFeedbackServiceInstance().updateFeedback(feedback1) ? "修改状态成功" : "修改状态失败");
                         showFeedbacks(ServiceFactory.getFeedbackServiceInstance().selectFeedbackByEmployeeId(mEmployee.getEmployeeId()));
 
                     });
@@ -436,7 +435,7 @@ public class EmployeeMainFrame extends NoBorderJFrame {
                     item3.setFont(new Font("微软雅黑", Font.PLAIN, 19));
                     item3.addActionListener(e3 -> {
                         feedback1.setDealStatus(Feedback.Status.CLOSED);
-                        MaterialOptionPane.showMessageDialog(ServiceFactory.getFeedbackServiceInstance().updateFeedback(feedback1)?"修改状态成功":"修改状态失败");
+                        MaterialOptionPane.showMessageDialog(ServiceFactory.getFeedbackServiceInstance().updateFeedback(feedback1) ? "修改状态成功" : "修改状态失败");
                         showFeedbacks(ServiceFactory.getFeedbackServiceInstance().selectFeedbackByEmployeeId(mEmployee.getEmployeeId()));
 
                     });
@@ -500,9 +499,26 @@ public class EmployeeMainFrame extends NoBorderJFrame {
         });
 
         initPanelContentCompent();
+
+        新增计划Button.addActionListener(e -> MaterialOptionPane.showTaskAddPanel(mEmployee.getEmployeeId(), () -> showTasks(ServiceFactory.getTaskServiceInstance().selectTaskByEmployeeId(mEmployee.getEmployeeId()))));
+        搜索客户Button.addActionListener(e -> {
+            String searchStr = searchCustomerField.getText();
+            if (searchStr.isEmpty() || " 搜索关键字...".equals(searchStr)) {
+                MaterialOptionPane.showMessageDialog("搜索关键字不能为空");
+                return;
+            }
+            showCustomers(ServiceFactory.getCustomerServiceInstance().selectCustomerLikely(searchStr));
+        });
+        导出客户数据Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                File file = FileUtil.appendString(ServiceFactory.getCustomerServiceInstance().selectCustomerByEmployeeId(mEmployee.getEmployeeId()).toString(), new File("Employee_" + mEmployee.getName() + "_customer_export.txt"), StandardCharsets.UTF_8);
+                MaterialOptionPane.showMessageDialog(file != null ? "导出成功，已保存到" + file.getAbsolutePath() + "中" : "导出失败");
+            }
+        });
     }
 
-    public void initPanelContentCompent(){
+    public void initPanelContentCompent() {
         searchCustomerField.addFocusListener(new JTextFieldHintListener(searchCustomerField, " 搜索关键字...", Font.PLAIN));
         searchCustomerField.setBorder(new RoundBorder(Color.LIGHT_GRAY));
     }

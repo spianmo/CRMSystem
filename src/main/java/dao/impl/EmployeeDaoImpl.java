@@ -18,9 +18,9 @@ import utils.jdbc.Db;
  **/
 public class EmployeeDaoImpl implements EmployeeDao {
     @Override
-    public Employee selectByUserId(String userId) {
+    public Employee selectByUserId(int userId) {
         @Language("SQL") String sql = "SELECT * FROM t_employee WHERE user_id = ?";
-        return Db.executeQuery(sql, new BeanHandler<>(Employee.class),userId);
+        return Db.executeQuery(sql, new BeanHandler<>(Employee.class), userId);
     }
 
     @Override

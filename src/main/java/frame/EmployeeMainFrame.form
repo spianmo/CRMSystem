@@ -155,32 +155,60 @@
                     </properties>
                     <border type="none"/>
                     <children>
-                      <grid id="e2477" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
+                      <grid id="e2477" layout-manager="BorderLayout" hgap="0" vgap="0">
                         <constraints border-constraint="Center"/>
                         <properties>
                           <background color="-1"/>
                         </properties>
                         <border type="none"/>
                         <children>
-                          <component id="b4878" class="javax.swing.JTextField" binding="searchCustomerField">
-                            <constraints/>
-                            <properties>
-                              <font name="Microsoft YaHei" size="18" style="0"/>
-                              <preferredSize width="180" height="36"/>
-                            </properties>
-                          </component>
-                          <component id="beff8" class="javax.swing.JButton" binding="搜索CustomerButton" default-binding="true">
-                            <constraints/>
-                            <properties>
-                              <background color="-11309570"/>
-                              <borderPainted value="false"/>
-                              <focusPainted value="false"/>
-                              <font name="Microsoft YaHei" size="16" style="0"/>
-                              <foreground color="-1"/>
-                              <preferredSize width="100" height="36"/>
-                              <text value="搜索"/>
-                            </properties>
-                          </component>
+                          <grid id="b567d" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                            <constraints border-constraint="East"/>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="b4878" class="javax.swing.JTextField" binding="searchCustomerField">
+                                <constraints/>
+                                <properties>
+                                  <font name="Microsoft YaHei" size="18" style="0"/>
+                                  <preferredSize width="180" height="36"/>
+                                </properties>
+                              </component>
+                              <component id="beff8" class="javax.swing.JButton" binding="搜索客户Button" default-binding="true">
+                                <constraints/>
+                                <properties>
+                                  <background color="-11309570"/>
+                                  <borderPainted value="false"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Microsoft YaHei" size="16" style="0"/>
+                                  <foreground color="-1"/>
+                                  <preferredSize width="120" height="36"/>
+                                  <text value="搜索客户"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="444f1" layout-manager="FlowLayout" hgap="15" vgap="5" flow-align="0">
+                            <constraints border-constraint="Center"/>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="26cbd" class="javax.swing.JButton" binding="导出客户数据Button" default-binding="true">
+                                <constraints/>
+                                <properties>
+                                  <background color="-11309570"/>
+                                  <borderPainted value="false"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Microsoft YaHei" size="16" style="0"/>
+                                  <foreground color="-1"/>
+                                  <horizontalAlignment value="0"/>
+                                  <horizontalTextPosition value="0"/>
+                                  <preferredSize width="140" height="36"/>
+                                  <text value="导出客户数据"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
                         </children>
                       </grid>
                     </children>

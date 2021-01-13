@@ -25,7 +25,7 @@ public class Task {
     private int employeeId;
     private Date taskTime;
     private String taskDesc;
-    private String customerNum;
+    private int customerNum;
     private TaskStatus taskStatus;
 
     public enum TaskStatus implements BaseEnum {
@@ -40,20 +40,24 @@ public class Task {
         /**
          * 一般
          */
-        COMMON(2,"一般"),
+        COMMON(2, "一般"),
         /**
          * 差
          */
-        BAD(3,"差"),
+        BAD(3, "差"),
         /**
          * 非常差
          */
-        VERYBAD(4,"非常差");
+        VERYBAD(4, "非常差"),
+        /**
+         * 绩效未复核
+         */
+        NOPROCESS(5, "绩效未复核");
 
         private final Integer value;
         private final String desc;
 
-        TaskStatus(Integer value,String desc) {
+        TaskStatus(Integer value, String desc) {
             this.value = value;
             this.desc = desc;
         }

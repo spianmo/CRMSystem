@@ -12,6 +12,7 @@ import java.util.List;
 import dao.CustomerDao;
 import entity.Customer;
 import utils.jdbc.BeanHandler;
+import utils.jdbc.BeanListHandler;
 import utils.jdbc.Db;
 import utils.jdbc.JDBCUtil;
 
@@ -24,9 +25,9 @@ import utils.jdbc.JDBCUtil;
 public class CustomerDaoImpl implements CustomerDao {
 
     @Override
-    public Customer selectByUserId(String userId) {
+    public Customer selectByUserId(int userId) {
         @Language("SQL") String sql = "SELECT * FROM t_customer WHERE user_id = ?";
-        return Db.executeQuery(sql,new BeanHandler<>(Customer.class),userId);
+        return Db.executeQuery(sql, new BeanHandler<>(Customer.class), userId);
     }
 
     @Override
@@ -54,6 +55,12 @@ public class CustomerDaoImpl implements CustomerDao {
         preparedStatement.close();
         jdbcUtil.close(preparedStatement, resultSet);
         return customerList;
+    }
+
+    @Override
+    public List<Customer> selectCustomerLikely(String str) {
+        @Language("SQL") String sql = "SELECT * FROM t_customer WHERE name LIKE ? OR address LIKE ?";
+        return Db.executeQuery(sql, new BeanListHandler<>(Customer.class), ("%" + str + "%"), ("%" + str + "%"));
     }
 
     private List<Customer> convert(ResultSet resultSet) throws SQLException {

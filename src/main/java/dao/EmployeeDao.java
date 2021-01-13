@@ -13,10 +13,12 @@ public interface EmployeeDao {
 
     /**
      * 根据用户ID查询用户
+     *
      * @param userId 用户ID
      * @return
      */
-    Employee selectByUserId(String userId);
+    Employee selectByUserId(int userId);
+
     /**
      * 查询所有的员工
      *

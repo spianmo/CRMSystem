@@ -16,7 +16,7 @@ import service.EmployeeService;
 public class EmployeeServiceImpl implements EmployeeService {
     EmployeeDao mEmployeeDao = DaoFactory.getEmployeeDaoInstance();
     @Override
-    public Employee selectByUserId(String userId) {
+    public Employee selectByUserId(int userId) {
         return mEmployeeDao.selectByUserId(userId);
     }
 

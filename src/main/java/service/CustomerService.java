@@ -5,9 +5,13 @@ import java.util.List;
 import entity.Customer;
 
 public interface CustomerService {
-    Customer selectByUserId(String customerId);
+    Customer selectByUserId(int customerId);
+
+    List<Customer> selectCustomerLikely(String str);
+
     /**
      * 查询所有的客户
+     *
      * @return 所有的客户实体集
      */
     List<Customer> selectAll();
