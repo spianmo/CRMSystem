@@ -16,6 +16,7 @@ import service.TradeService;
  **/
 public class TradeServiceImpl implements TradeService {
     TradeDao mTradeDao = DaoFactory.getTradeDaoInstance();
+
     @Override
     public List<Trade> selectAllTrade() {
         return mTradeDao.selectAllTrade();
@@ -25,6 +26,12 @@ public class TradeServiceImpl implements TradeService {
     public List<TradeVo> selectTradeByCustomerId(int customerId) {
         return mTradeDao.selectTradeByCustomerId(customerId);
     }
+
+    @Override
+    public List<TradeVo> selectAllTradeVo() {
+        return mTradeDao.selectAllTradeVo();
+    }
+
 
     @Override
     public List<Trade> selectTradeByEmployeeId(int employeeId) {

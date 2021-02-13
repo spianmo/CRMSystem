@@ -31,9 +31,15 @@ public class TradeDaoImpl implements TradeDao {
     }
 
     @Override
+    public List<TradeVo> selectAllTradeVo() {
+        @Language("SQL") String sql = "SELECT t1.trade_id,t2.name AS produce_name,t1.customer_id,t1.amount,t1.produce_num,t1.trade_time FROM t_trade t1 LEFT JOIN t_produce t2 ON t1.produce_id = t2.produce_id";
+        return Db.executeQuery(sql, new BeanListHandler<>(TradeVo.class));
+    }
+
+    @Override
     public List<Trade> selectTradeByEmployeeId(int employeeId) {
         @Language("SQL") String sql = "SELECT * FROM t_trade WHERE t_employee.employee_id =?";
-        return Db.executeQuery(sql, new BeanListHandler<>(Trade.class),employeeId);
+        return Db.executeQuery(sql, new BeanListHandler<>(Trade.class), employeeId);
     }
 
     @Override

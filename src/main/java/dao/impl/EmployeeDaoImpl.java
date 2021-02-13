@@ -37,8 +37,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public int insertEmployee(Employee employee) {
-        @Language("SQL") String sql = "INSERT INTO t_employee (name, produce_type, department_id, salary) VALUES (?, ?, ?, ?);";
-        return Db.executeUpdate(sql, employee.getName(), employee.getProduceType(), employee.getDepartmentId(), employee.getSalary());
+        @Language("SQL") String sql = "INSERT INTO t_employee (name, produce_type, department_id, salary,user_id) VALUES (?, ?, ?, ?,?);";
+        return Db.executeUpdate(sql, employee.getName(), employee.getProduceType(), employee.getDepartmentId(), employee.getSalary(), employee.getUserId());
     }
 
     @Override
@@ -51,6 +51,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
     public int deleteEmployeeById(int employeeId) {
         @Language("SQL") String sql = "DELETE FROM t_employee WHERE employee_id = ?";
         return Db.executeUpdate(sql, employeeId);
+    }
+
+    @Override
+    public List<Employee> selectEmployeeLikely(String str) {
+        @Language("SQL") String sql = "SELECT * FROM t_employee WHERE name LIKE ? OR produce_type LIKE ?";
+        return Db.executeQuery(sql, new BeanListHandler<>(Employee.class), ("%" + str + "%"), ("%" + str + "%"));
     }
 
 }

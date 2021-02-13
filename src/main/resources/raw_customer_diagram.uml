@@ -3,62 +3,62 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="1322.5" y="470.0">service.CustomerService</node>
-    <node x="989.0" y="-32.5">frame.EmployeeMainFrame</node>
-    <node x="968.5" y="186.0">factory.ServiceFactory</node>
-    <node x="-30.0" y="458.5">utils.jdbc.JDBCUtil</node>
-    <node x="242.5" y="470.0">dao.impl.CustomerDaoImpl</node>
-    <node x="624.0" y="426.0">factory.DaoFactory</node>
-    <node x="962.5" y="470.0">service.impl.CustomerServiceImpl</node>
-    <node x="602.5" y="710.0">dao.CustomerDao</node>
+    <node x="349.0" y="-3.5">frame.EmployeeMainFrame</node>
+    <node x="-37.5" y="288.0">service.CustomerService</node>
+    <node x="328.5" y="266.0">factory.ServiceFactory</node>
+    <node x="370.0" y="1218.5">utils.jdbc.JDBCUtil</node>
+    <node x="322.5" y="1008.0">dao.impl.CustomerDaoImpl</node>
+    <node x="344.0" y="746.0">factory.DaoFactory</node>
+    <node x="322.5" y="528.0">service.impl.CustomerServiceImpl</node>
+    <node x="682.5" y="768.0">dao.CustomerDao</node>
   </nodes>
   <notes />
   <edges>
     <edge source="dao.impl.CustomerDaoImpl" target="utils.jdbc.JDBCUtil">
-      <point x="-157.5" y="-0.0" />
-      <point x="110.0" y="-0.0" />
+      <point x="0.0" y="72.0" />
+      <point x="0.0" y="-61.5" />
     </edge>
     <edge source="factory.DaoFactory" target="dao.CustomerDao">
-      <point x="0.0" y="94.0" />
-      <point x="0.0" y="-50.0" />
+      <point x="136.0" y="-0.0" />
+      <point x="-157.5" y="-0.0" />
     </edge>
     <edge source="factory.ServiceFactory" target="service.CustomerService">
-      <point x="151.5" y="-0.0" />
-      <point x="1480.0" y="280.0" />
-      <point x="0.0" y="-50.0" />
+      <point x="-151.5" y="-0.0" />
+      <point x="157.5" y="-0.0" />
     </edge>
     <edge source="service.impl.CustomerServiceImpl" target="service.CustomerService">
-      <point x="157.5" y="-0.0" />
       <point x="-157.5" y="-0.0" />
+      <point x="120.0" y="600.0" />
+      <point x="0.0" y="72.0" />
     </edge>
     <edge source="service.impl.CustomerServiceImpl" target="dao.CustomerDao">
-      <point x="0.0" y="50.0" />
-      <point x="1120.0" y="760.0" />
       <point x="157.5" y="-0.0" />
-    </edge>
-    <edge source="dao.impl.CustomerDaoImpl" target="dao.CustomerDao">
-      <point x="0.0" y="50.0" />
-      <point x="400.0" y="760.0" />
-      <point x="-157.5" y="-0.0" />
+      <point x="840.0" y="600.0" />
+      <point x="0.0" y="-72.0" />
     </edge>
     <edge source="service.impl.CustomerServiceImpl" target="factory.DaoFactory">
-      <point x="-157.5" y="-0.0" />
-      <point x="136.0" y="-0.0" />
+      <point x="0.0" y="72.0" />
+      <point x="0.0" y="-94.0" />
+    </edge>
+    <edge source="dao.impl.CustomerDaoImpl" target="dao.CustomerDao">
+      <point x="157.5" y="-0.0" />
+      <point x="840.0" y="1080.0" />
+      <point x="0.0" y="72.0" />
     </edge>
     <edge source="factory.DaoFactory" target="dao.impl.CustomerDaoImpl">
-      <point x="-136.0" y="-0.0" />
-      <point x="157.5" y="-0.0" />
+      <point x="0.0" y="94.0" />
+      <point x="0.0" y="-72.0" />
     </edge>
     <edge source="factory.ServiceFactory" target="service.impl.CustomerServiceImpl">
       <point x="0.0" y="94.0" />
-      <point x="0.0" y="-50.0" />
+      <point x="0.0" y="-72.0" />
     </edge>
     <edge source="frame.EmployeeMainFrame" target="factory.ServiceFactory">
-      <point x="0.0" y="72.5" />
+      <point x="0.0" y="83.5" />
       <point x="0.0" y="-94.0" />
     </edge>
   </edges>
-  <settings layout="Directed Orthogonal" zoom="0.776361529548088" x="660.0" y="378.5" />
+  <settings layout="Directed Orthogonal" zoom="0.776361529548088" x="1009.5244466066649" y="397.5" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>

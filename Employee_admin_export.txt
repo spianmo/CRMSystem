@@ -1,0 +1,1 @@
+[Employee(employeeId=1, name=kirito, produceType=主机类, departmentId=1, salary=24000, userId=1), Employee(employeeId=3, name=余欣婷, produceType=软件类, departmentId=2, salary=20000, userId=3)]

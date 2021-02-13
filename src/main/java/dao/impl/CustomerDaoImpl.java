@@ -63,6 +63,12 @@ public class CustomerDaoImpl implements CustomerDao {
         return Db.executeQuery(sql, new BeanListHandler<>(Customer.class), ("%" + str + "%"), ("%" + str + "%"));
     }
 
+    @Override
+    public int insertCustomer(Customer customer) {
+        @Language("SQL") String sql = "INSERT INTO t_customer (customer_id,name, address, credit, phone, employee_id, user_id) VALUES (?,?, ?, ?, ?,?,?);";
+        return Db.executeUpdate(sql, customer.getCustomerId(), customer.getName(), customer.getAddress(), customer.getCredit(), customer.getPhone(), customer.getEmployeeId(), customer.getUserId());
+    }
+
     private List<Customer> convert(ResultSet resultSet) throws SQLException {
         List<Customer> customerList = new ArrayList<>();
         while (resultSet.next()) {

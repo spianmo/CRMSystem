@@ -44,4 +44,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public boolean deleteEmployeeById(int employeeId) {
         return mEmployeeDao.deleteEmployeeById(employeeId) == 1;
     }
+
+    @Override
+    public List<Employee> selectEmployeeLikely(String searchStr) {
+        return mEmployeeDao.selectEmployeeLikely(searchStr);
+    }
 }

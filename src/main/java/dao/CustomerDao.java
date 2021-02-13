@@ -39,4 +39,6 @@ public interface CustomerDao {
     List<Customer> selectCustomerByEmployeeId(int employeeId) throws SQLException;
 
     List<Customer> selectCustomerLikely(String str);
+
+    int insertCustomer(Customer customer);
 }

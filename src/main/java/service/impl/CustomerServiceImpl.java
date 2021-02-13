@@ -42,6 +42,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public boolean insertCustomer(Customer customer) {
+        return mCustomerDao.insertCustomer(customer) == 1;
+    }
+
+    @Override
     public List<Customer> selectCustomerByEmployeeId(int employeeId) {
         List<Customer> customerList = new ArrayList<>();
         try {

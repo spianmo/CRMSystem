@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="frame.AdminMainFrame">
   <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="1" width="898" height="561"/>
+      <xy x="20" y="1" width="898" height="562"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -17,67 +17,6 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="e6135" class="javax.swing.JButton" binding="员工管理Button">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="-1" height="100"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-1"/>
-              <borderPainted value="false"/>
-              <focusable value="false"/>
-              <font name="Microsoft YaHei" size="26" style="0"/>
-              <foreground color="-11309570"/>
-              <text value="员工管理"/>
-            </properties>
-          </component>
-          <component id="1d072" class="javax.swing.JButton" binding="客户管理Button">
-            <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="-1" height="100"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-11309570"/>
-              <borderPainted value="false"/>
-              <focusable value="false"/>
-              <font name="Microsoft YaHei" size="26" style="0"/>
-              <foreground color="-1"/>
-              <text value="客户管理"/>
-            </properties>
-          </component>
-          <component id="f3a84" class="javax.swing.JButton" binding="订单管理Button">
-            <constraints>
-              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="-1" height="100"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-11309570"/>
-              <borderPainted value="false"/>
-              <focusable value="false"/>
-              <font name="Microsoft YaHei" size="26" style="0"/>
-              <foreground color="-1"/>
-              <text value="订单管理"/>
-            </properties>
-          </component>
-          <component id="bbe04" class="javax.swing.JButton" binding="查询业绩Button">
-            <constraints>
-              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="-1" height="100"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-11309570"/>
-              <borderPainted value="false"/>
-              <focusable value="false"/>
-              <font name="Microsoft YaHei" size="26" style="0"/>
-              <foreground color="-1"/>
-              <hideActionText value="false"/>
-              <text value="查询业绩"/>
-            </properties>
-          </component>
           <grid id="e2d68" binding="logoPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -109,6 +48,68 @@
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="2020-12-08 21:17:21"/>
+            </properties>
+          </component>
+          <component id="e6135" class="javax.swing.JButton" binding="客户管理Button">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="-1" height="100"/>
+              </grid>
+            </constraints>
+            <properties>
+              <autoscrolls value="false"/>
+              <background color="-1"/>
+              <borderPainted value="false"/>
+              <focusable value="false"/>
+              <font name="Microsoft YaHei" size="26" style="0"/>
+              <foreground color="-11309570"/>
+              <text value="客户管理"/>
+            </properties>
+          </component>
+          <component id="1d072" class="javax.swing.JButton" binding="员工管理Button">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="-1" height="100"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-11309570"/>
+              <borderPainted value="false"/>
+              <focusable value="false"/>
+              <font name="Microsoft YaHei" size="26" style="0"/>
+              <foreground color="-1"/>
+              <text value="员工管理"/>
+            </properties>
+          </component>
+          <component id="f3a84" class="javax.swing.JButton" binding="订单管理Button">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="-1" height="100"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-11309570"/>
+              <borderPainted value="false"/>
+              <focusable value="false"/>
+              <font name="Microsoft YaHei" size="26" style="0"/>
+              <foreground color="-1"/>
+              <text value="订单管理"/>
+            </properties>
+          </component>
+          <component id="bbe04" class="javax.swing.JButton" binding="查询业绩Button">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="-1" height="100"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-11309570"/>
+              <borderPainted value="false"/>
+              <focusable value="false"/>
+              <font name="Microsoft YaHei" size="26" style="0"/>
+              <foreground color="-1"/>
+              <hideActionText value="false"/>
+              <text value="查询业绩"/>
             </properties>
           </component>
         </children>
@@ -144,7 +145,7 @@
                     <border type="none"/>
                     <children>
                       <grid id="e2477" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
-                        <constraints border-constraint="Center"/>
+                        <constraints border-constraint="East"/>
                         <properties>
                           <background color="-1"/>
                         </properties>
@@ -171,14 +172,52 @@
                           </component>
                         </children>
                       </grid>
+                      <grid id="6fc32" layout-manager="FlowLayout" hgap="10" vgap="5" flow-align="1">
+                        <constraints border-constraint="West"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="6bf73" class="javax.swing.JButton" binding="添加客户Button" default-binding="true">
+                            <constraints/>
+                            <properties>
+                              <background color="-11309570"/>
+                              <borderPainted value="false"/>
+                              <focusPainted value="false"/>
+                              <font name="Microsoft YaHei" size="16" style="0"/>
+                              <foreground color="-1"/>
+                              <preferredSize width="100" height="36"/>
+                              <text value="添加客户"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
                     </children>
                   </grid>
-                  <grid id="97bc4" binding="customerTablePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                  <splitpane id="6c1e4">
                     <constraints border-constraint="Center"/>
-                    <properties/>
+                    <properties>
+                      <dividerLocation value="180"/>
+                    </properties>
                     <border type="none"/>
-                    <children/>
-                  </grid>
+                    <children>
+                      <grid id="4541c" binding="treePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints>
+                          <splitpane position="left"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children/>
+                      </grid>
+                      <grid id="97bc4" binding="customerTablePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints>
+                          <splitpane position="right"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children/>
+                      </grid>
+                    </children>
+                  </splitpane>
                 </children>
               </grid>
               <grid id="bde0d" binding="taskManagePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
@@ -189,10 +228,48 @@
                   <background color="-1"/>
                 </properties>
                 <border type="none"/>
-                <children/>
+                <children>
+                  <grid id="79895" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="North"/>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <grid id="3941b" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                        <constraints border-constraint="East"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="56b2f" class="javax.swing.JButton" binding="导出员工绩效Button" default-binding="true">
+                            <constraints/>
+                            <properties>
+                              <background color="-11309570"/>
+                              <borderPainted value="false"/>
+                              <focusPainted value="false"/>
+                              <font name="Microsoft YaHei" size="16" style="0"/>
+                              <foreground color="-1"/>
+                              <preferredSize width="140" height="38"/>
+                              <text value="导出员工绩效"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="1722a" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                        <constraints border-constraint="West"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children/>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="96f7f" binding="taskTablePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="Center"/>
+                    <properties/>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                </children>
               </grid>
-              <grid id="83f99" binding="feedbackDealPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
+              <grid id="83f99" binding="tradeManagePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                 <constraints>
                   <card name="Card4"/>
                 </constraints>
@@ -200,7 +277,46 @@
                   <background color="-1"/>
                 </properties>
                 <border type="none"/>
-                <children/>
+                <children>
+                  <grid id="63407" binding="tradeTablePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="Center"/>
+                    <properties/>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                  <grid id="f3dab" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="North"/>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <grid id="d756" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                        <constraints border-constraint="West"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children/>
+                      </grid>
+                      <grid id="f732a" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                        <constraints border-constraint="East"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="bcee4" class="javax.swing.JButton" binding="导出订单Button" default-binding="true">
+                            <constraints/>
+                            <properties>
+                              <background color="-11309570"/>
+                              <borderPainted value="false"/>
+                              <focusPainted value="false"/>
+                              <font name="Microsoft YaHei" size="16" style="0"/>
+                              <foreground color="-1"/>
+                              <preferredSize width="100" height="36"/>
+                              <text value="导出订单"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                </children>
               </grid>
               <grid id="268d7" binding="employeeManagePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                 <constraints>
@@ -215,7 +331,7 @@
                     <border type="none"/>
                     <children>
                       <grid id="e8908" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
-                        <constraints border-constraint="Center"/>
+                        <constraints border-constraint="East"/>
                         <properties>
                           <autoscrolls value="false"/>
                           <background color="-1"/>
@@ -239,6 +355,37 @@
                               <foreground color="-1"/>
                               <preferredSize width="100" height="36"/>
                               <text value="搜索"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="60cde" layout-manager="FlowLayout" hgap="10" vgap="5" flow-align="0">
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="c0953" class="javax.swing.JButton" binding="导出员工Button" default-binding="true">
+                            <constraints/>
+                            <properties>
+                              <background color="-11309570"/>
+                              <borderPainted value="false"/>
+                              <focusPainted value="false"/>
+                              <font name="Microsoft YaHei" size="16" style="0"/>
+                              <foreground color="-1"/>
+                              <preferredSize width="100" height="36"/>
+                              <text value="导出员工"/>
+                            </properties>
+                          </component>
+                          <component id="5953e" class="javax.swing.JButton" binding="添加员工Button" default-binding="true">
+                            <constraints/>
+                            <properties>
+                              <background color="-11309570"/>
+                              <borderPainted value="false"/>
+                              <focusPainted value="false"/>
+                              <font name="Microsoft YaHei" size="16" style="0"/>
+                              <foreground color="-1"/>
+                              <preferredSize width="100" height="36"/>
+                              <text value="添加员工"/>
                             </properties>
                           </component>
                         </children>

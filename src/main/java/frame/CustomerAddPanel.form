@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="frame.CustomerAddPanel">
+  <grid id="cbd77" binding="contentPane" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="48" y="54" width="619" height="411"/>
+    </constraints>
+    <properties>
+      <preferredSize width="300" height="500"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="e3588" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-1"/>
+          <preferredSize width="127" height="42"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="dfb20" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <font name="Microsoft YaHei UI" size="20" style="1"/>
+              <foreground color="-13816531"/>
+              <horizontalAlignment value="0"/>
+              <text value="    添加客户记录"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="94766" layout-manager="FlowLayout" hgap="0" vgap="0" flow-align="1">
+        <constraints border-constraint="South"/>
+        <properties>
+          <background color="-1"/>
+          <preferredSize width="296" height="48"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="e7465" class="javax.swing.JButton" binding="确定Button">
+            <constraints/>
+            <properties>
+              <background color="-1"/>
+              <borderPainted value="false"/>
+              <focusPainted value="false"/>
+              <font name="Microsoft YaHei UI" size="20" style="1"/>
+              <foreground color="-11309570"/>
+              <label value="新 增"/>
+              <preferredSize width="148" height="42"/>
+              <text value="新 增"/>
+            </properties>
+          </component>
+          <component id="6bd46" class="javax.swing.JButton" binding="取消Button" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-1"/>
+              <borderPainted value="false"/>
+              <focusPainted value="false"/>
+              <font name="Microsoft YaHei UI" size="20" style="1"/>
+              <foreground color="-769226"/>
+              <label value="取  消"/>
+              <preferredSize width="148" height="42"/>
+              <text value="取  消"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="7d77" layout-manager="GridLayoutManager" row-count="3" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-1"/>
+          <preferredSize width="320" height="80"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="4468b" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="1" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Microsoft YaHei" size="16" style="0"/>
+              <foreground color="-12500671"/>
+              <text value="   客户住址"/>
+            </properties>
+          </component>
+          <component id="44b1a" class="javax.swing.JTextField" binding="客户住址extField">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="160" height="42"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Microsoft YaHei" size="16" style="0"/>
+            </properties>
+          </component>
+          <component id="ebd2c" class="javax.swing.JTextField" binding="姓名textField">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="60" height="42"/>
+                <preferred-size width="160" height="42"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Microsoft YaHei" size="16" style="0"/>
+            </properties>
+          </component>
+          <component id="dae06" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Microsoft YaHei" size="16" style="0"/>
+              <foreground color="-12500671"/>
+              <text value="     姓     名"/>
+            </properties>
+          </component>
+          <component id="c8ddc" class="javax.swing.JTextField" binding="账号IDtextField">
+            <constraints>
+              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="160" height="42"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Microsoft YaHei" size="16" style="0"/>
+            </properties>
+          </component>
+          <component id="e15c6" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Microsoft YaHei" size="16" style="0"/>
+              <foreground color="-12500671"/>
+              <text value="账号ID"/>
+            </properties>
+          </component>
+          <component id="7fa58" class="javax.swing.JTextField" binding="手机号码textField">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="160" height="42"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Microsoft YaHei" size="16" style="0"/>
+            </properties>
+          </component>
+          <component id="11efb" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Microsoft YaHei" size="16" style="0"/>
+              <foreground color="-12500671"/>
+              <text value="     手机号码"/>
+            </properties>
+          </component>
+          <component id="a85ce" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Microsoft YaHei" size="16" style="0"/>
+              <foreground color="-12500671"/>
+              <horizontalAlignment value="0"/>
+              <text value="信用级别"/>
+            </properties>
+          </component>
+          <component id="dbefe" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Microsoft YaHei" size="16" style="0"/>
+              <foreground color="-12500671"/>
+              <text value="所属员工"/>
+            </properties>
+          </component>
+          <component id="c1e1a" class="javax.swing.JTextField" binding="所属员工textField">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="160" height="42"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="true"/>
+              <font name="Microsoft YaHei" size="16" style="0"/>
+            </properties>
+          </component>
+          <component id="f8b03" class="javax.swing.JTextField" binding="信用级别textField">
+            <constraints>
+              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="160" height="42"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Microsoft YaHei" size="16" style="0"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

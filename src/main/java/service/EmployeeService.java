@@ -58,4 +58,6 @@ public interface EmployeeService {
      * @return 返回影响行数
      */
     boolean deleteEmployeeById(int employeeId);
+
+    List<Employee> selectEmployeeLikely(String searchStr);
 }

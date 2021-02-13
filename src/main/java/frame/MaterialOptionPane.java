@@ -28,4 +28,13 @@ public class MaterialOptionPane {
         frame.setVisible(true);
     }
 
+    public static void showEmployeeAddPanel(EmployeeAddPanel.Callback callback) {
+        EmployeeAddPanel frame = new EmployeeAddPanel(callback);
+        frame.setVisible(true);
+    }
+
+    public static void showCustomerAddPanel(CustomerAddPanel.Callback callback) {
+        CustomerAddPanel frame = new CustomerAddPanel(callback);
+        frame.setVisible(true);
+    }
 }

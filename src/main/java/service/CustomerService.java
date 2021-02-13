@@ -16,6 +16,8 @@ public interface CustomerService {
      */
     List<Customer> selectAll();
 
+    boolean insertCustomer(Customer customer);
+
     /**
      * 根据员工ID查询其所属的所有客户
      * @param employeeId 员工ID

@@ -17,12 +17,17 @@ public interface TradeService {
 
     /**
      * 查询某一客户的所有订单
+     *
      * @param customerId 客户ID
      * @return 返回某一客户的所有订单
      */
     List<TradeVo> selectTradeByCustomerId(int customerId);
+
+    List<TradeVo> selectAllTradeVo();
+
     /**
      * 根据员工ID查询订单
+     *
      * @param employeeId 员工ID
      * @return 返回根据员工ID查询订单实体集
      */

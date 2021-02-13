@@ -501,7 +501,14 @@ public class EmployeeMainFrame extends NoBorderJFrame {
 
         initPanelContentCompent();
 
-        新增计划Button.addActionListener(e -> MaterialOptionPane.showTaskAddPanel(mEmployee.getEmployeeId(), () -> showTasks(ServiceFactory.getTaskServiceInstance().selectTaskByEmployeeId(mEmployee.getEmployeeId()))));
+        新增计划Button.addActionListener(e -> {
+            MaterialOptionPane.showTaskAddPanel(mEmployee.getEmployeeId(), new TaskAddPanel.Callback() {
+                @Override
+                public void onFinish() {
+                    EmployeeMainFrame.this.showTasks(ServiceFactory.getTaskServiceInstance().selectTaskByEmployeeId(mEmployee.getEmployeeId()));
+                }
+            });
+        });
         搜索客户Button.addActionListener(e -> {
             String searchStr = searchCustomerField.getText();
             if (searchStr.isEmpty() || " 搜索关键字...".equals(searchStr)) {

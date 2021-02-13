@@ -1,8 +1,8 @@
 package dao;
 
-import entity.Task;
-
 import java.util.List;
+
+import entity.Task;
 
 public interface TaskDao {
     /**
